@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,52 +11,113 @@
     <link href='css/style.css' rel='stylesheet' />
 
     <title>OC-DWJ-P3</title>
-    
-</head>
-<body>
 
-        <div id='map'></div>
-        <script>
+</head>
+
+<body>
+    <div id='map'></div>
+    <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoicGF1bGFudG9pbmVjb2xpbiIsImEiOiJjazBqYmdiYWIwOGFjM2huMTR0enVpejk1In0.DmB49AgRVNtdlx9L_HKZlQ';
         var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [4.859900325525473, 45.75373343249737],
-        minZoom: 11.76579926226891,
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [4.859900325525473, 45.75373343249737],
+            minZoom: 11.76579926226891,
         });
 
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.NavigationControl());
-        
 
-    var geojson = {
-        type: 'FeatureCollection',
-        features: [{
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [4.859900325525473, 45.75373343249737]
-            },
-            properties: {
-                title: 'Mapbox',
-                description: 'station'
-            }
-        }]
-    };
 
-  // add markers to map
-geojson.features.forEach(function(marker) {
+        // Add pointers
+        // var geojson = {
+        //     type: 'FeatureCollection',
+        //     features: [{
+        //         type: 'Feature',
+        //         geometry: {
+        //             type: 'Point',
+        //             coordinates: [4.859900325525473, 45.75373343249737]
+        //         },
+        //         properties: {
+        //             title: 'Mapbox',
+        //             description: 'station'
+        //         }
+        //     }]
+        // };
 
-  // create a HTML element for each feature
-  var el = document.createElement('div');
-  el.className = 'marker';
+        // add markers to map
+        // geojson.features.forEach(function (marker) {
 
-  // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
-});
-        </script>
-    
+        //     // create a HTML element for each feature
+        //     var el = document.createElement('div');
+        //     el.className = 'marker';
+
+        //     // make a marker for each feature and add to the map
+        //     new mapboxgl.Marker(el)
+        //         .setLngLat(marker.geometry.coordinates)
+        //         .addTo(map);
+        // });
+
+        map.on('load', function () {
+
+            // Add a layer showing the places.
+            map.addLayer({
+                "id": "places",
+                "type": "symbol",
+                "source": {
+                    "type": "geojson",
+                    "data": {
+                        "type": "FeatureCollection",
+                        "features": [{
+                            "type": "Feature",
+                            "properties": {
+                                "description": "<strong>Truckeroo</strong><p><a href=\"http://www.truckeroodc.com/www/\" target=\"_blank\">Truckeroo</a> brings dozens of food trucks, live music, and games to half and M Street SE (across from Navy Yard Metro Station) today from 11:00 a.m. to 11:00 p.m.</p>",
+                                "icon": "music"
+                            },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [4.859900325525473, 45.75373343249737]
+                            }
+                        }]
+                    }
+                },
+                "layout": {
+                    "icon-image": "{icon}-15",
+                    "icon-allow-overlap": true
+                }
+            });
+
+            // When a click event occurs on a feature in the places layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            map.on('click', 'places', function (e) {
+                var coordinates = e.features[0].geometry.coordinates.slice();
+                var description = e.features[0].properties.description;
+
+                // Ensure that if the map is zoomed out such that multiple
+                // copies of the feature are visible, the popup appears
+                // over the copy being pointed to.
+                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                }
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'places', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+    </script>
+
 </body>
+
 </html>
