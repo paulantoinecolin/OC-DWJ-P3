@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
     <link href='css/style.css' rel='stylesheet' />
@@ -83,33 +83,6 @@ inputs[i].onclick = switchLayer;
 
         map.on('load', function () {
             
-            // Add a layer showing the places.
-            // map.addLayer({
-            //     "id": "places",
-            //     "type": "symbol",
-            //     "source": {
-            //         "type": "geojson",
-            //         "data": {
-            //             "type": "FeatureCollection",
-            //             "features": [{
-            //                 "type": "Feature",
-            //                 "properties": {
-            //                     "description": "<strong>Station n°206</strong></br><i>12 rue des Oiseaux plats</i><p> Il reste 2 vélos à cette station</p>",
-            //                     "icon": "music"
-            //                 },
-            //                 "geometry": {
-            //                     "type": "Point",
-            //                     "coordinates": [4.859900325525473, 45.75373343249737]
-            //                 }
-            //             }]
-            //         }
-            //     },
-            //     "layout": {
-            //         "icon-image": "{icon}-15",
-            //         "icon-allow-overlap": true
-            //     }
-            // });
-
             // When a click event occurs on a feature in the places layer, open a popup at the
             // location of the feature, with description HTML from its properties.
             map.on('click', 'places', function (e) {
