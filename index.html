@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
     <title>OC-DWJ-P3</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <figure>
+        <img src="img/montagne.jpg" alt="montagne" />
+        <figcaption>Montagne enneigée</figcaption>
+      </figure>
+
+      <figure>
+        <img src="img/plage.jpg" alt="plage" />
+        <figcaption>Coucher de soleil et bateau de pêcheurs</figcaption>
+      </figure>
+
+      <figure>
+        <img src="img/nuages.jpg" alt="nuages" />
+        <figcaption>Au-dessus des nuages</figcaption>
+      </figure>
+
+      <!-- Next and previous buttons -->
+      <div class="prev">&#10094;</div>
+      <div class="next">&#10095;</div>
+
+      <!-- Play/Pause button -->
+    </div>
+    <button class="btnPause fas fa-pause-circle" id="pause"></button>
+    <br />
+
+    <script src="script.js"></script>
+  </body>
 </html>

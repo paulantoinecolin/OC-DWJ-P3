@@ -1,0 +1,68 @@
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+figure {
+  display: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: gray;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  user-select: none;
+  border-radius: 5px;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Play/Pause button */
+.btnPause {
+  cursor: pointer;
+  position: absolute;
+  margin: 0 auto;
+  right: 50%;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: gray;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Caption text */
+figcaption {
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
