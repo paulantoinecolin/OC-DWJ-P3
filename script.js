@@ -60,13 +60,13 @@ function pauseSlideshow() {
   clearInterval(slideInterval);
 }
 
-pauseButton.onclick = function() {
+pauseButton.addEventListener('click', function() {
   if (playing) {
     pauseSlideshow();
   } else {
     playSlideshow();
   }
-};
+});
 
 // let t1 = test;
 // let t2 = test(2);
