@@ -1,72 +1,82 @@
-let index = 0;
-const slides = document.querySelectorAll('figure');
-const btnPrev = document.querySelector('.prev');
-const btnNext = document.querySelector('.next');
-btnPrev.addEventListener('click', function() {
-  plusSlides(-1);
-});
-btnNext.addEventListener('click', function() {
-  plusSlides(1);
-});
+class Diaporama {
+  constructor(idContainer) {
+    console.log(idContainer);
+    this.index = 0;
+    this.container = document.querySelector('#' + idContainer);
+    this.slides = this.container.querySelectorAll('figure');
+    this.btnPrev = document.querySelector('.prev');
+    this.btnNext = document.querySelector('.next');
+    this.btnPrev.addEventListener('click', () => {
+      this.plusSlides(-1);
+    });
+    this.btnNext.addEventListener('click', () => {
+      this.plusSlides(1);
+    });
 
-window.addEventListener('keydown', function(e) {
-  if (e.keyCode == '37') {
-    plusSlides(-1);
-  } else if (e.keyCode == '39') {
-    plusSlides(1);
+    window.addEventListener('keydown', e => {
+      if (e.keyCode == '37') {
+        this.plusSlides(-1);
+      } else if (e.keyCode == '39') {
+        this.plusSlides(1);
+      }
+    });
+
+    this.playing = true; // Slideshow is playing by default
+    this.pauseButton = document.querySelector('.btnPause');
+
+    this.showSlides();
+
+    // Automatic Slideshow
+    this.playSlideshow();
+
+    this.pauseButton.addEventListener('click', () => {
+      if (this.playing) {
+        this.pauseSlideshow();
+      } else {
+        this.playSlideshow();
+      }
+    });
   }
-});
-
-let playing = true; // Slideshow is playing by default
-const pauseButton = document.querySelector('.btnPause');
-
-showSlides();
-
-// Reveal hidden slide
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
+  // Reveal hidden slide
+  showSlides() {
+    for (let i = 0; i < this.slides.length; i++) {
+      this.slides[i].style.display = 'none';
+    }
+    this.slides[this.index].style.display = 'block';
   }
-  slides[index].style.display = 'block';
+
+  // Next/previous controls
+  plusSlides(n) {
+    this.index += n;
+    if (this.index >= this.slides.length) {
+      this.index = 0;
+    }
+    if (this.index < 0) {
+      this.index = this.slides.length - 1;
+    }
+    this.showSlides();
+  }
+
+  playSlideshow() {
+    this.pauseButton.classList.replace('fa-play-circle', 'fa-pause-circle');
+    this.playing = true;
+    this.slideInterval = setInterval(() => {
+      this.plusSlides(1);
+    }, 5000); // Change image every 5 seconds
+  }
+
+  // Play/Pause controls
+  pauseSlideshow() {
+    this.pauseButton.classList.replace('fa-pause-circle', 'fa-play-circle');
+    this.playing = false;
+    clearInterval(this.slideInterval);
+  }
 }
 
-// Next/previous controls
-function plusSlides(n) {
-  index += n;
-  if (index >= slides.length) {
-    index = 0;
-  }
-  if (index < 0) {
-    index = slides.length - 1;
-  }
-  showSlides();
-}
+const diaporama = new Diaporama('diapo');
 
-// Automatic Slideshow
-playSlideshow();
-
-function playSlideshow() {
-  pauseButton.classList.replace('fa-play-circle', 'fa-pause-circle');
-  playing = true;
-  slideInterval = setInterval(function() {
-    plusSlides(1);
-  }, 5000); // Change image every 5 seconds
-}
-
-// Play/Pause controls
-function pauseSlideshow() {
-  pauseButton.classList.replace('fa-pause-circle', 'fa-play-circle');
-  playing = false;
-  clearInterval(slideInterval);
-}
-
-pauseButton.addEventListener('click', function() {
-  if (playing) {
-    pauseSlideshow();
-  } else {
-    playSlideshow();
-  }
-});
+// let index = 0;
+// let slideInterval;
 
 // let t1 = test;
 // let t2 = test(2);
