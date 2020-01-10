@@ -81,3 +81,31 @@ map.on('load', function() {
     map.getCanvas().style.cursor = '';
   });
 });
+
+// Exécute un appel AJAX GET
+// Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
+function ajaxGet(url, callback) {
+  var req = new XMLHttpRequest();
+  req.open('GET', url);
+  req.addEventListener('load', function() {
+    if (req.status >= 200 && req.status < 400) {
+      // Appelle la fonction callback en lui passant la réponse de la requête
+      callback(req.responseText);
+    } else {
+      console.error(req.status + ' ' + req.statusText + ' ' + url);
+    }
+  });
+  req.addEventListener('error', function() {
+    console.error("Erreur réseau avec l'URL " + url);
+  });
+  req.send(null);
+}
+
+ajaxGet(
+  'https://api.jcdecaux.com/vls/v3/stations?contract=lyon&apiKey=ceb9bf298a04c4be43e722b64824d650cf690bf3',
+  data => {
+    var stations = JSON.parse(data);
+    console.log(stations[0].name);
+    console.log(stations[0].position.latitude);
+  }
+);
