@@ -1,9 +1,9 @@
 class Diaporama {
   constructor(idContainer) {
-    console.log(idContainer);
     this.index = 0;
     this.container = document.querySelector('#' + idContainer);
     this.slides = this.container.querySelectorAll('figure');
+    this.navigation = document.getElementById('#navigation');
     this.btnPrev = document.querySelector('.prev');
     this.btnNext = document.querySelector('.next');
     this.btnPrev.addEventListener('click', () => {
@@ -25,8 +25,6 @@ class Diaporama {
     this.pauseButton = document.querySelector('.btnPause');
 
     this.showSlides();
-
-    // Automatic Slideshow
     this.playSlideshow();
 
     this.pauseButton.addEventListener('click', () => {
@@ -37,12 +35,22 @@ class Diaporama {
       }
     });
   }
+
   // Reveal hidden slide
   showSlides() {
     for (let i = 0; i < this.slides.length; i++) {
       this.slides[i].style.display = 'none';
     }
     this.slides[this.index].style.display = 'block';
+  }
+
+  // Automatic Slideshow
+  playSlideshow() {
+    this.pauseButton.classList.replace('fa-play-circle', 'fa-pause-circle');
+    this.playing = true;
+    this.slideInterval = setInterval(() => {
+      this.plusSlides(1);
+    }, 5000); // Change image every 5 seconds
   }
 
   // Next/previous controls
@@ -57,14 +65,6 @@ class Diaporama {
     this.showSlides();
   }
 
-  playSlideshow() {
-    this.pauseButton.classList.replace('fa-play-circle', 'fa-pause-circle');
-    this.playing = true;
-    this.slideInterval = setInterval(() => {
-      this.plusSlides(1);
-    }, 5000); // Change image every 5 seconds
-  }
-
   // Play/Pause controls
   pauseSlideshow() {
     this.pauseButton.classList.replace('fa-pause-circle', 'fa-play-circle');
@@ -74,15 +74,3 @@ class Diaporama {
 }
 
 const diaporama = new Diaporama('diapo');
-
-// let index = 0;
-// let slideInterval;
-
-// let t1 = test;
-// let t2 = test(2);
-// console.log(t1);
-// console.log('---');
-// console.log(t2);
-// function test(n) {
-//   return n * 2;
-// }
