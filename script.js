@@ -1,12 +1,15 @@
 mapboxgl.accessToken =
   'pk.eyJ1IjoicGF1bGFudG9pbmVjb2xpbiIsImEiOiJjazBqYmdiYWIwOGFjM2huMTR0enVpejk1In0.DmB49AgRVNtdlx9L_HKZlQ';
-var map = new mapboxgl.Map({
-  container: 'map',
+
+// Initialize the map
+let map = new mapboxgl.Map({
+  container: 'map', // div id from index.html
   style: 'mapbox://styles/mapbox/streets-v11',
   center: [4.859900325525473, 45.75373343249737],
   minZoom: 11.76579926226891
 });
 
+// Switch  option between street <> Satellite view
 var layerList = document.getElementById('menu');
 var inputs = layerList.getElementsByTagName('input');
 
@@ -22,7 +25,7 @@ for (var i = 0; i < inputs.length; i++) {
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 
-// Add pointers
+// Add pointers (this is were to load my stations coordinates from JCDecaux API)
 var geojson = {
   type: 'FeatureCollection',
   features: [
@@ -41,7 +44,7 @@ var geojson = {
   ]
 };
 
-// add markers to map
+// add markers to map (this is were I want to display the stations)
 geojson.features.forEach(function(marker) {
   // create a HTML element for each feature
   var el = document.createElement('div');
@@ -65,10 +68,25 @@ map.on('load', function() {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new mapboxgl.Popup()
-      .setLngLat(coordinates)
-      .setHTML(description)
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(
+        new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML(
+            '<h3>' +
+              marker.properties.title +
+              '</h3><p>' +
+              marker.properties.description +
+              '</p>'
+          )
+      )
       .addTo(map);
+  });
+
+  // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+  // JE DOIS AJOUTER UN LAYER (https://docs.mapbox.com/mapbox-gl-js/example/center-on-symbol/)
+  map.on('click', 'symbols', function(e) {
+    map.flyTo({ center: e.features[0].geometry.coordinates });
   });
 
   // Change the cursor to a pointer when the mouse is over the places layer.
@@ -82,7 +100,7 @@ map.on('load', function() {
   });
 });
 
-// Exécute un appel AJAX GET
+// Make an AJAX GET request
 // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
 function ajaxGet(url, callback) {
   var req = new XMLHttpRequest();

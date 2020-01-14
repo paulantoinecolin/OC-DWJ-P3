@@ -1,35 +1,41 @@
 body {
-	margin: 0;
-	padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
 
 #map {
-	position:absolute;
-	top:50px;
-	bottom:0;
-	width:100%
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 #menu {
-	position: absolute;
-	background: #fff;
-	bottom: 30px;
-	right: 0;
-	padding: 5px 8px;
-	font-family: 'Open Sans', sans-serif;
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);border-radius: 4px;
-	}
+  position: absolute;
+  background: #fff;
+  bottom: 30px;
+  right: 0;
+  padding: 5px 8px;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
 
 .marker {
-	background-image: url('../ico/bike.png');
-	background-size: cover;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	cursor: pointer;
-  }
+  background-image: url('../ico/bike.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
-  .mapboxgl-popup {
-	max-width: 400px;
-	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	}
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
