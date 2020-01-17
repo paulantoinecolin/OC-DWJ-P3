@@ -22,12 +22,24 @@ body {
 }
 
 .marker {
-  background-image: url('../ico/bike.png');
+  background-image: url('../ico/bikeMarker.png');
   background-size: cover;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.bike {
+  background-image: url('../ico/bike.svg');
+  width: 35px;
+  height: 35px;
+}
+
+.parking {
+  background-image: url('../ico/parking.svg');
+  width: 35px;
+  height: 35px;
 }
 
 .mapboxgl-popup {
