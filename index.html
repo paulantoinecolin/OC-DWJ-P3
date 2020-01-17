@@ -17,7 +17,21 @@
 
   <body>
     <div id="map"></div>
-
+    <aside id="reservation">
+      <p>Nom - N° station</p>
+      <p>Addresse</p>
+      <p>Nombre vélos dispos Nombre parkings dispos</p>
+      <p id="station_closed">
+        Cette station est en cours de réparations. Essayez sur une station
+        voisine !
+      </p>
+      <p id="station_empty">
+        Aucun Vélo n'est disponible pour le moment. Essayez sur une station
+        voisine !
+        <p id="few_bikes">Il reste seulement X vélos. Dépêchez-vous de réserver !</p>
+      </p>
+      <button>Réserver</button>
+    </aside>
     <div id="menu">
       <input
         id="streets-v11"
@@ -30,6 +44,7 @@
       <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" />
       <label for="satellite">satellite</label>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>

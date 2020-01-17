@@ -43,31 +43,55 @@ function ajaxGet(url, callback) {
   req.send(null);
 }
 
-ajaxGet('stations.json', data => {
-  var stations = JSON.parse(data);
+ajaxGet(
+  'https://api.jcdecaux.com/vls/v3/stations?contract=lyon&apiKey=ceb9bf298a04c4be43e722b64824d650cf690bf3',
+  data => {
+    var stations = JSON.parse(data);
 
-  stations.forEach(function(station) {
-    // create a HTML element for each feature
-    var el = document.createElement('div');
-    el.className = 'marker';
-    // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el)
-      .setLngLat([station.position.longitude, station.position.latitude])
-      .setPopup(
-        new mapboxgl.Popup({ offset: 25 }) // add popups
-          .setHTML(
-            '<h3>' +
-              station.name +
-              '</br>' +
-              station.totalStands.availabilities.bikes +
-              '</h3>'
-          )
-      )
-      .addTo(map);
-  });
-});
+    stations.forEach(function(station) {
+      // create a HTML element for each feature
+      var el = document.createElement('div');
+      if (station.status === 'OPEN') {
+        if (station.totalStands.availabilities.bikes < 3) {
+          el.className = 'marker-red';
+        } else {
+          el.className = 'marker-green';
+        }
+      } else {
+        el.className = 'marker-closed';
+      }
 
-// Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
-map.on('click', 'symbols', function(e) {
-  map.flyTo({ center: e.features[0].geometry.coordinates });
-});
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+        .setLngLat([station.position.longitude, station.position.latitude])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              '<h3>' +
+                station.name +
+                '</br>' +
+                station.totalStands.availabilities.bikes +
+                '</h3>'
+            )
+        )
+        .addTo(map);
+
+      el.addEventListener('click', e => {
+        // console.log(station);
+        document.getElementById('reservation').style.display = 'block';
+
+        // Center Marker on clic
+        map.flyTo({
+          center: [station.position.longitude, station.position.latitude],
+          zoom: 15,
+          speed: 0.2,
+          curve: 1.42,
+          maxDuration: 1,
+          easing(t) {
+            return t;
+          }
+        });
+      });
+    });
+  }
+);
