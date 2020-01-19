@@ -18,19 +18,49 @@
   <body>
     <div id="map"></div>
     <aside id="reservation">
-      <p>Nom - N° station</p>
-      <p>Addresse</p>
-      <p>Nombre vélos dispos Nombre parkings dispos</p>
-      <p id="station_closed">
-        Cette station est en cours de réparations. Essayez sur une station
-        voisine !
-      </p>
-      <p id="station_empty">
-        Aucun Vélo n'est disponible pour le moment. Essayez sur une station
-        voisine !
-        <p id="few_bikes">Il reste seulement X vélos. Dépêchez-vous de réserver !</p>
-      </p>
-      <button>Réserver</button>
+      <p id="stationName"></p>
+      <p id="stationAddress"></p>
+      <div class="availabilities">
+        <div id="bikeAvailable"></div>
+        <div id="parkingAvailable"></div>
+      </div>
+      <button id="btn btn-reservation">Réserver</button>
+
+      <form id="formulaire" method="post" action="">
+        <label>Nom</label>
+        <input
+          type="text"
+          name="last-name"
+          id="last-name"
+          class="stored"
+          value=""
+        />
+        <br />
+        <label>Prénom</label>
+        <input
+          type="text"
+          name="first-name"
+          id="first-name"
+          class="stored"
+          value=""
+        />
+      </form>
+
+      <div class="signature">
+        <div class="row">
+          <p>Signature</p>
+        </div>
+        <div class="row">
+          <canvas id="sig-canvas" width="400" height="160">
+            Veuillez mettre à jour votre navigateur.
+          </canvas>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-default" id="sig-clearBtn">Effacer</button>
+        <button class="btn btn-primary" id="sig-submitBtn">Confirmer</button>
+      </div>
     </aside>
     <div id="menu">
       <input

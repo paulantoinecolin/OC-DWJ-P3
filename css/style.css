@@ -22,15 +22,15 @@ body {
 }
 
 #reservation {
-  /* display: none; */
+  display: none;
   position: fixed;
   width: 20%;
   top: 0;
   left: 0;
   bottom: 0;
-  padding: 50px 0px 0px 50px;
+  padding: 50px;
   background: #fff;
-  border-radius: 0px 25px 25px 0px;
+  border-radius: 0px 15px 15px 0px;
   box-shadow: 1px 1px 10px black;
 }
 
@@ -70,4 +70,34 @@ body {
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 15px;
+  padding: 0px 20px;
+}
+
+.availabilities {
+  display: flex;
+  align-items: flex-start;
+}
+
+#bikeAvailable:after {
+  content: url('../ico/bicycle.svg');
+  position: relative;
+}
+
+#parkingAvailable:after {
+  content: url('../ico/parking-white.svg');
+  position: relative;
+}
+
+#formulaire {
+  padding-top: 50px;
+}
+
+#sig-canvas {
+  border: 2px dotted #CCCCCC;
+  border-radius: 15px;
+  cursor: crosshair;
 }
