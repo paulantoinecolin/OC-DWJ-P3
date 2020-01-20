@@ -21,18 +21,6 @@ body {
   border-radius: 4px;
 }
 
-#reservation {
-  display: none;
-  position: fixed;
-  width: 20%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding: 50px;
-  background: #fff;
-  border-radius: 0px 15px 15px 0px;
-  box-shadow: 1px 1px 10px black;
-}
 
 .marker-red {
   background-image: url('../ico/bike_red.svg');
@@ -77,19 +65,43 @@ body {
   padding: 0px 20px;
 }
 
+#reservation {
+  /* display: none; */
+  display: block;
+  position: fixed;
+  width: 20%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 50px;
+  background: #fff;
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: 1px 1px 10px black;
+}
+
 .availabilities {
   display: flex;
   align-items: flex-start;
 }
 
+#bikeAvailable,
+#parkingAvailable {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
 #bikeAvailable:after {
   content: url('../ico/bicycle.svg');
   position: relative;
+  top: 12px;
+  left: 10px;
 }
 
 #parkingAvailable:after {
   content: url('../ico/parking-white.svg');
   position: relative;
+  top: 12px;
+  left: 10px;
 }
 
 #formulaire {
