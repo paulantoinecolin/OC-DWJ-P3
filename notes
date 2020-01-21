@@ -1,0 +1,62 @@
+'https://api.jcdecaux.com/vls/v3/stations?contract=lyon&apiKey=ceb9bf298a04c4be43e722b64824d650cf690bf3'
+
+{
+number: 2010,
+contractName: "lyon",
+name: "2010 - CONFLUENCE / DARSE",
+address: "ANGLE ALLEE ANDRE MURE ET QUAI ANTOINE RIBOUD",
+position: {
+latitude: 45.743317,
+longitude: 4.815747
+},
+banking: true,
+bonus: false,
+status: "OPEN",
+lastUpdate: "2020-01-14T13:44:37Z",
+connected: true,
+overflow: false,
+shape: null,
+totalStands: {
+availabilities: {
+bikes: 7,
+stands: 14,
+mechanicalBikes: 7,
+electricalBikes: 0,
+electricalInternalBatteryBikes: 0,
+electricalRemovableBatteryBikes: 0
+},
+capacity: 22
+},
+mainStands: {
+availabilities: {
+bikes: 7,
+stands: 14,
+mechanicalBikes: 7,
+electricalBikes: 0,
+electricalInternalBatteryBikes: 0,
+electricalRemovableBatteryBikes: 0
+},
+capacity: 22
+},
+overflowStands: null
+},
+
+
+// Mapbox Marker example
+var geojson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [4.859900325525473, 45.75373343249737]
+      },
+      properties: {
+        title: 'Mapbox',
+        description:
+          '<strong>Station n°206</strong></br><i>12 rue des Oiseaux plats</i><p> Il reste 2 vélos à cette station</p>'
+      }
+    }
+  ]
+}; */
