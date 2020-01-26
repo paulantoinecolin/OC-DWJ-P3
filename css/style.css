@@ -74,6 +74,7 @@ figcaption {
 
 #map {
   margin: 0 auto;
+  margin-top: 50px;
   width: 80%;
   height: 400px;
 }
