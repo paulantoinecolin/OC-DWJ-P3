@@ -90,7 +90,6 @@ figcaption {
   border-radius: 4px;
 }
 
-
 .marker-red {
   background-image: url('../ico/bike_red.svg');
   background-size: cover;
@@ -135,8 +134,8 @@ figcaption {
 }
 
 #reservation {
-  display: none;
-  /* display: block; */
+  /* display: none; */
+  display: block;
   position: fixed;
   width: 20%;
   top: 0;
@@ -178,7 +177,7 @@ figcaption {
 }
 
 #sig-canvas {
-  border: 2px dotted #CCCCCC;
+  border: 2px dotted #cccccc;
   border-radius: 15px;
   cursor: crosshair;
 }
