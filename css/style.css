@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .slideshow-container {
   max-width: 1000px;
   position: relative;
@@ -65,4 +70,114 @@ figcaption {
   bottom: 40px;
   width: 100%;
   text-align: center;
+}
+
+#map {
+  margin: 0 auto;
+  width: 80%;
+  height: 400px;
+}
+
+#menu {
+  position: absolute;
+  background: #fff;
+  bottom: 30px;
+  right: 0;
+  padding: 5px 8px;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+
+.marker-red {
+  background-image: url('../ico/bike_red.svg');
+  background-size: cover;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker-green {
+  background-image: url('../ico/bike.svg');
+  background-size: cover;
+  background-color: green;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker-closed {
+  background-image: url('../ico/closed.svg');
+  background-size: cover;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 15px;
+  padding: 0px 20px;
+}
+
+#reservation {
+  display: none;
+  /* display: block; */
+  position: fixed;
+  width: 20%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 50px;
+  background: #fff;
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: 1px 1px 10px black;
+}
+
+.availabilities {
+  display: flex;
+  align-items: flex-start;
+}
+
+#bikeAvailable,
+#parkingAvailable {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#bikeAvailable:after {
+  content: url('../ico/bicycle.svg');
+  position: relative;
+  top: 12px;
+  left: 10px;
+}
+
+#parkingAvailable:after {
+  content: url('../ico/parking-white.svg');
+  position: relative;
+  top: 12px;
+  left: 10px;
+}
+
+#formulaire {
+  padding-top: 50px;
+}
+
+#sig-canvas {
+  border: 2px dotted #CCCCCC;
+  border-radius: 15px;
+  cursor: crosshair;
 }
