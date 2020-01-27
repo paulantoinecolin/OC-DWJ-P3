@@ -4,7 +4,6 @@ class Diaporama {
     this.index = 0;
     this.container = document.querySelector('#' + idContainer);
     this.slides = this.container.querySelectorAll('figure');
-    // this.navigation = document.getElementById('#navigation');
     this.btnPrev = this.container.querySelector('.prev');
     this.btnNext = this.container.querySelector('.next');
 
@@ -106,7 +105,7 @@ for (var i = 0; i < inputs.length; i++) {
 }
 
 // Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 // Make an AJAX GET request
 function ajaxGet(url, callback) {
@@ -177,7 +176,7 @@ ajaxGet(
           }
         });
 
-        // Open reservation form
+        // Open reservation aside
         if (
           station.status === 'CLOSED' ||
           station.totalStands.availabilities.bikes === 0
@@ -201,28 +200,31 @@ ajaxGet(
 window.addEventListener('load', () => {
   const canvas = document.getElementById('sig-canvas');
   const ctx = canvas.getContext('2d');
+  ctx.lineWidth = 4;
+  ctx.lineCap = 'round';
 
   // variables
   let drawing = false;
 
   function startPosition(e) {
     drawing = true;
-    sign(e);
+    ctx.beginPath();
+    ctx.lineTo(e.offsetX, e.offsetY);
+    // sign(e);
   }
 
-  function finishedPosition() {
+  function finishedPosition(e) {
     drawing = false;
-    ctx.beginPath();
+    ctx.closePath();
   }
 
   function sign(e) {
     if (!drawing) return;
-    ctx.lineWidth = 4;
-    ctx.lineCap = 'round';
-    ctx.lineTo(e.clientX, e.clientY);
+    ctx.lineTo(e.offsetX, e.offsetY);
     ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(e.clientX, e.clientY);
+
+    // ctx.beginPath();
+    // ctx.moveTo(e.clientX, e.clientY);
   }
 
   // EventListeners
