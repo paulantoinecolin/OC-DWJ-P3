@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+footer {
+  height: 300px;
+}
+
 .slideshow-container {
   max-width: 1000px;
   position: relative;
@@ -140,8 +144,9 @@ figcaption {
 #reservation {
   display: none;
   /* display: block; */
-  position: fixed;
+  position: absolute;
   width: 20%;
+  height: 580px;
   top: 528px;
   right: 0;
   bottom: 0;
