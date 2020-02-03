@@ -10,10 +10,10 @@ class Signature {
   }
 
   setListeners() {
-    // this.canvas.addEventListener('mousedown', this.startPosition.bind(this));
-    this.canvas.addEventListener('mousedown', e => {
-      this.startPosition(e);
-    });
+    // this.canvas.addEventListener('mousedown', e => {
+    //   this.startPosition(e);
+    // });
+    this.canvas.addEventListener('mousedown', this.startPosition.bind(this));
     this.canvas.addEventListener('mouseup', this.finishedPosition.bind(this));
     this.canvas.addEventListener('mousemove', this.sign.bind(this));
   }

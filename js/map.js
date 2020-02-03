@@ -1,30 +1,25 @@
-mapboxgl.accessToken =
-  'pk.eyJ1IjoicGF1bGFudG9pbmVjb2xpbiIsImEiOiJjazBqYmdiYWIwOGFjM2huMTR0enVpejk1In0.DmB49AgRVNtdlx9L_HKZlQ';
-
-// Initialize the map
-let map = new mapboxgl.Map({
-  container: 'map', // div id from index.html
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [4.859900325525473, 45.75373343249737],
-  minZoom: 11.76579926226891
-});
-
-// Switch  option between street <> Satellite view
-var layerList = document.getElementById('menu');
-var inputs = layerList.getElementsByTagName('input');
-
-function switchLayer(layer) {
-  var layerId = layer.target.id;
-  map.setStyle('mapbox://styles/mapbox/' + layerId);
+// OOP
+class Map {
+  constructor(idContainer) {
+    this.container = document.querySelector('#' + idContainer);
+    
+    
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoicGF1bGFudG9pbmVjb2xpbiIsImEiOiJjazBqYmdiYWIwOGFjM2huMTR0enVpejk1In0.DmB49AgRVNtdlx9L_HKZlQ';
+    
+      this.map = new mapboxgl.Map({
+      container: 'map', // div id from index.html
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [4.859900325525473, 45.75373343249737],
+      minZoom: 11.76579926226891
+    });
+    this.map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+  }
 }
 
-for (var i = 0; i < inputs.length; i++) {
-  inputs[i].onclick = switchLayer;
-}
+const map = new Map('map');
 
-// Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-
+// PROCEDURAL
 // Make an AJAX GET request
 function ajaxGet(url, callback) {
   var req = new XMLHttpRequest();

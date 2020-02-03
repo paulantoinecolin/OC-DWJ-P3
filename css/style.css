@@ -8,6 +8,8 @@ footer {
 }
 
 .slideshow-container {
+  /* Remove the display none to get the diaporama back */
+  display: none;
   max-width: 1000px;
   position: relative;
   margin: auto;
@@ -142,8 +144,8 @@ figcaption {
 }
 
 #reservation {
-  /* display: none; */
-  display: block;
+  display: none;
+  /* display: block; */
   position: absolute;
   width: 20%;
   height: 580px;
