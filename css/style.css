@@ -142,8 +142,8 @@ figcaption {
 }
 
 #reservation {
-  display: none;
-  /* display: block; */
+  /* display: none; */
+  display: block;
   position: absolute;
   width: 20%;
   height: 580px;
