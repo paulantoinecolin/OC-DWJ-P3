@@ -50,6 +50,12 @@
 
     <div id="map"></div>
 
+    <div id="timer">
+      <div class="display">
+        <p class="reservationFeedback">test</p>
+      </div>
+    </div>
+
     <aside id="reservation">
       <p id="stationName"></p>
       <p id="stationAddress"></p>
@@ -61,20 +67,13 @@
 
       <form id="formulaire" method="post" action="">
         <label>Nom</label>
-        <input
-          type="text"
-          name="last-name"
-          id="last-name"
-          class="stored"
-          value=""
-        />
+        <input type="text" name="last-name" class="last-name stored" value="" />
         <br />
         <label>Prénom</label>
         <input
           type="text"
           name="first-name"
-          id="first-name"
-          class="stored"
+          class="first-name stored"
           value=""
         />
       </form>
@@ -84,22 +83,39 @@
           <p>Signature</p>
         </div>
         <div class="row">
-          <canvas id="sig-canvas" width="400" height="160">
+          <canvas class="sig-canvas">
             Veuillez mettre à jour votre navigateur.
           </canvas>
         </div>
       </div>
 
       <div class="row">
-        <button class="btn btn-default" id="sig-clearBtn">Effacer</button>
-        <button class="btn btn-primary" id="sig-submitBtn">Confirmer</button>
+        <button class="sig-clearBtn btn btn-default">Effacer</button>
+        <button
+          data-time="1200"
+          class="sig-submitBtn btn btn-primary timer__button"
+        >
+          Valider
+        </button>
       </div>
     </aside>
 
     <footer></footer>
 
     <script src="js/diaporama.js"></script>
-    <script src="js/canvas.js"></script>
+    <script src="js/signature.js"></script>
+    <script src="js/reservation.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/timer.js"></script>
+
+    <script>
+      window.onload = function() {
+        const diaporama = new Diaporama('diapo');
+        const map = new Map('map');
+        const reservation = new Reservation(
+          document.getElementById('reservation')
+        );
+      };
+    </script>
   </body>
 </html>

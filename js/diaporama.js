@@ -1,7 +1,7 @@
 class Diaporama {
   constructor(idContainer) {
     this.index = 0;
-    this.container = document.querySelector('#' + idContainer);
+    this.container = document.getElementById(idContainer);
     this.slides = this.container.querySelectorAll('figure');
     this.btnPrev = this.container.querySelector('.prev');
     this.btnNext = this.container.querySelector('.next');
@@ -11,7 +11,7 @@ class Diaporama {
 
     this.setListeners();
     this.showSlides();
-    this.playSlideshow();
+    // this.playSlideshow(); // <-ENLEVER LES COMMENTAIRES POUR RELANCER LE SLIDESHOW AUTO
   }
 
   setListeners() {
@@ -31,13 +31,17 @@ class Diaporama {
     });
 
     this.pauseButton.addEventListener('click', () => {
-      if (this.playing) {
-        this.pauseSlideshow();
-      } else {
-        this.playSlideshow();
-      }
+      this.playing ? this.pauseSlideshow() : this.playSlideshow();
     });
   }
+
+  // this.pauseButton.addEventListener('click', () => {
+  //   if (this.playing) {
+  //     this.pauseSlideshow();
+  //   } else {
+  //     this.playSlideshow();
+  //   }
+  // });
 
   // Reveal hidden slide
   showSlides() {
@@ -75,5 +79,3 @@ class Diaporama {
     clearInterval(this.slideInterval);
   }
 }
-
-const diaporama = new Diaporama('diapo');
