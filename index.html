@@ -57,7 +57,6 @@
         <div id="bikeAvailable"></div>
         <div id="parkingAvailable"></div>
       </div>
-      <button id="btn btn-reservation">Réserver</button>
 
       <form id="formulaire" method="post" action="">
         <label>Nom</label>
@@ -86,7 +85,7 @@
       <div class="row">
         <button class="sig-clearBtn btn btn-default">Effacer</button>
         <button class="sig-submitBtn btn btn-primary timer__button">
-          Valider
+          Réserver
         </button>
       </div>
     </aside>
@@ -109,7 +108,8 @@
         const diaporama = new Diaporama('diapo');
         const map = new Map(document.getElementById('map'));
         const reservation = new Reservation(
-          document.getElementById('reservation')
+          document.getElementById('reservation'),
+          document.getElementById('timer')
         );
       };
     </script>

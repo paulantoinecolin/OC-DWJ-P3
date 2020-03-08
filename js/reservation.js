@@ -1,11 +1,10 @@
 class Reservation {
-  constructor(reservationNode) {
+  constructor(reservationNode, timerNode) {
     this.main = reservationNode;
 
     this.signature = new Signature(
       this.main.getElementsByClassName('sig-canvas')[0]
     );
-    this.timer = new Timer('timer');
 
     this.lastname = this.main.getElementsByClassName('last-name')[0];
     this.firstname = this.main.getElementsByClassName('first-name')[0];
@@ -16,6 +15,9 @@ class Reservation {
     this.buttonSubmit.addEventListener('click', this.storeData.bind(this));
 
     this.getLocalStorage();
+    this.getSessionStorage();
+
+    this.timer = new Timer(timerNode, this);
   }
 
   clear() {
@@ -23,17 +25,46 @@ class Reservation {
   }
 
   getLocalStorage() {
-    // this.lastname.value = localStore.lastname;
-    // this.firstname.value = localStore.firstname;
+    this.lastname.value = localStorage.getItem('lastname');
+    this.firstname.value = localStorage.getItem('firstname');
   }
 
   setLocalStorage() {
-    // localStore.lastname = this.lastname.value;
-    // localStore.firstname = this.firstname.value;
+    localStorage.firstname = this.firstname.value;
+    localStorage.lastname = this.lastname.value;
+  }
+
+  getSessionStorage() {
+    this.stationName = sessionStorage.stationName;
+  }
+
+  setSessionStorage() {
+    sessionStorage.stationName = this.stationName;
   }
 
   storeData() {
-    // this.setLocalStorage();
-    startTimer(1200);
+    this.timer.startTimer(1200);
+    this.stationName = document
+      .getElementById('stationName')
+      .getAttribute('data-name');
+    this.setLocalStorage();
+    this.setSessionStorage();
+  }
+
+  getLastName() {
+    return this.lastname.value;
+  }
+
+  getReservationMessage(timeLeft) {
+    return (
+      'Vélo réservé à la station ' +
+      this.stationName +
+      ' par ' +
+      this.firstname.value +
+      ' ' +
+      this.lastname.value +
+      'Temps restant : ' +
+      timeLeft
+    );
   }
 }

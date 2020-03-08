@@ -146,14 +146,19 @@ figcaption {
   display: block;
   position: absolute;
   width: 20%;
-  height: 580px;
-  top: 528px;
+  height: 450px;
+  top: 520px;
   right: 0;
   bottom: 0;
-  padding: 50px;
+  padding: 25px;
   background: #fff;
   border-radius: 15px 0px 0px 15px;
   box-shadow: 1px 1px 10px black;
+}
+
+p {
+  font-size: 0.8em;
+  text-transform: uppercase;
 }
 
 .availabilities {
@@ -164,7 +169,6 @@ figcaption {
 #bikeAvailable,
 #parkingAvailable {
   margin-left: 20px;
-  margin-bottom: 20px;
 }
 
 #bikeAvailable:after {
@@ -182,7 +186,23 @@ figcaption {
 }
 
 #formulaire {
-  padding-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+label {
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 10px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+input {
+  display: inline-block;
+  float: left;
 }
 
 #reservation .sig-canvas {

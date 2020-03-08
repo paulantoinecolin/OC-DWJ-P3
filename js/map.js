@@ -45,17 +45,17 @@ class Map {
       // make a marker for each feature and add to the map
       new mapboxgl.Marker(el)
         .setLngLat([station.position.longitude, station.position.latitude])
-        .addTo(this.container)
-        // add popups
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }).setHTML(
-            '<h4 id="popup">' +
-              station.name +
-              '</br>' +
-              station.totalStands.availabilities.bikes +
-              '</h4>'
-          )
-        );
+        .addTo(this.container);
+      // add popups
+      // .setPopup(
+      //   new mapboxgl.Popup({ offset: 25 }).setHTML(
+      //     '<h4 id="popup">' +
+      //       station.name +
+      //       '</br>' +
+      //       station.totalStands.availabilities.bikes +
+      //       '</h4>'
+      //   )
+      // );
 
       el.addEventListener('click', () => {
         this.onMarkerClick(station);
@@ -85,8 +85,12 @@ class Map {
       return;
     } else {
       document.getElementById('reservation').style.display = 'block';
-      stationName.innerHTML = station.name;
-      stationAddress.innerHTML = station.address;
+
+      stationName.innerHTML =
+        '<strong>STATION : </strong>' + station.name.split(' - ')[1];
+      stationName.setAttribute('data-name', station.name.split(' - ')[1]);
+      stationAddress.innerHTML =
+        '<strong>ADRESSE : </strong>' + station.address;
       bikeAvailable.innerHTML = station.totalStands.availabilities.bikes;
       parkingAvailable.innerHTML = station.totalStands.availabilities.stands;
     }
