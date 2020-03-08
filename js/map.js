@@ -1,6 +1,6 @@
 class Map {
-  constructor(idContainer) {
-    this.map = document.querySelector('#' + idContainer);
+  constructor(mapNode) {
+    this.map = mapNode;
     this.stationName = document.getElementById('stationName');
     this.stationAddress = document.getElementById('stationAddress');
     this.bikeAvailable = document.getElementById('bikeAvailable');
@@ -24,7 +24,7 @@ class Map {
         this.setMarkers(data);
       }
     );
-  } //END OF CONSTRUCTOR
+  }
 
   setMarkers(data) {
     const stations = JSON.parse(data);
@@ -46,15 +46,15 @@ class Map {
       new mapboxgl.Marker(el)
         .setLngLat([station.position.longitude, station.position.latitude])
         .addTo(this.container)
+        // add popups
         .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(
-              '<h4 id="popup">' +
-                station.name +
-                '</br>' +
-                station.totalStands.availabilities.bikes +
-                '</h4>'
-            )
+          new mapboxgl.Popup({ offset: 25 }).setHTML(
+            '<h4 id="popup">' +
+              station.name +
+              '</br>' +
+              station.totalStands.availabilities.bikes +
+              '</h4>'
+          )
         );
 
       el.addEventListener('click', () => {
@@ -63,8 +63,8 @@ class Map {
     });
   }
 
+  // center Marker on clic
   onMarkerClick(station) {
-    // Center Marker on clic
     this.container.flyTo({
       center: [station.position.longitude, station.position.latitude],
       zoom: 13,
@@ -76,7 +76,7 @@ class Map {
       }
     });
 
-    // Open reservation aside
+    // open reservation aside
     if (
       station.status === 'CLOSED' ||
       station.totalStands.availabilities.bikes === 0
@@ -92,7 +92,7 @@ class Map {
     }
   }
 
-  // Make an AJAX GET request
+  // AJAX request
   ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
     req.open('GET', url);
@@ -109,4 +109,4 @@ class Map {
     });
     req.send(null);
   }
-} //END OF CLASS
+}

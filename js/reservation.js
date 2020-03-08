@@ -5,7 +5,7 @@ class Reservation {
     this.signature = new Signature(
       this.main.getElementsByClassName('sig-canvas')[0]
     );
-    // this.timer = new Timer(this.main.getElementByID('timer'));
+    this.timer = new Timer('timer');
 
     this.lastname = this.main.getElementsByClassName('last-name')[0];
     this.firstname = this.main.getElementsByClassName('first-name')[0];
@@ -34,6 +34,6 @@ class Reservation {
 
   storeData() {
     // this.setLocalStorage();
-    // this.timer.startTimer(1200);
+    startTimer(1200);
   }
 }

@@ -190,3 +190,7 @@ figcaption {
   border-radius: 15px;
   cursor: crosshair;
 }
+
+#timer {
+  margin: 20px;
+}

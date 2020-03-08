@@ -50,12 +50,6 @@
 
     <div id="map"></div>
 
-    <div id="timer">
-      <div class="display">
-        <p class="reservationFeedback">test</p>
-      </div>
-    </div>
-
     <aside id="reservation">
       <p id="stationName"></p>
       <p id="stationAddress"></p>
@@ -91,15 +85,17 @@
 
       <div class="row">
         <button class="sig-clearBtn btn btn-default">Effacer</button>
-        <button
-          data-time="1200"
-          class="sig-submitBtn btn btn-primary timer__button"
-        >
+        <button class="sig-submitBtn btn btn-primary timer__button">
           Valider
         </button>
       </div>
     </aside>
 
+    <div id="timer">
+      <div class="display">
+        <p class="reservationFeedback">test</p>
+      </div>
+    </div>
     <footer></footer>
 
     <script src="js/diaporama.js"></script>
@@ -111,7 +107,7 @@
     <script>
       window.onload = function() {
         const diaporama = new Diaporama('diapo');
-        const map = new Map('map');
+        const map = new Map(document.getElementById('map'));
         const reservation = new Reservation(
           document.getElementById('reservation')
         );

@@ -6,7 +6,7 @@ class Diaporama {
     this.btnPrev = this.container.querySelector('.prev');
     this.btnNext = this.container.querySelector('.next');
 
-    this.playing = true; // Slideshow is playing by default
+    this.playing = true; // slideshow is playing by default
     this.pauseButton = this.container.querySelector('.btnPause');
 
     this.setListeners();
@@ -35,15 +35,7 @@ class Diaporama {
     });
   }
 
-  // this.pauseButton.addEventListener('click', () => {
-  //   if (this.playing) {
-  //     this.pauseSlideshow();
-  //   } else {
-  //     this.playSlideshow();
-  //   }
-  // });
-
-  // Reveal hidden slide
+  // reveal hidden slide
   showSlides() {
     for (let i = 0; i < this.slides.length; i++) {
       this.slides[i].style.display = 'none';
@@ -51,7 +43,7 @@ class Diaporama {
     this.slides[this.index].style.display = 'block';
   }
 
-  // Automatic Slideshow
+  // automatic Slideshow
   playSlideshow() {
     this.pauseButton.classList.replace('fa-play-circle', 'fa-pause-circle');
     this.playing = true;
