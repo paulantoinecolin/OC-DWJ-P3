@@ -7,9 +7,11 @@ class Reservation {
     // this.lastname = this.main.getElementsByClassName('last-name')[0];
     this.lastname = this.main.querySelector('.last-name');
     this.firstname = this.main.querySelector('.first-name');
+    this.buttonClose = this.main.querySelector('.delete');
     this.buttonClear = this.main.querySelector('.sig-clearBtn');
     this.buttonSubmit = this.main.querySelector('.sig-submitBtn');
 
+    this.buttonClose.addEventListener('click', this.closeForm.bind(this));
     this.buttonClear.addEventListener('click', this.clear.bind(this));
     this.buttonSubmit.addEventListener('click', this.storeData.bind(this));
 
@@ -21,6 +23,10 @@ class Reservation {
     this.timer = new Timer(timerNode, this);
     this.getLocalStorage();
     this.getSessionStorage();
+  }
+
+  closeForm() {
+    document.getElementById('reservation').style.display = 'none';
   }
 
   clear() {
@@ -46,12 +52,16 @@ class Reservation {
   }
 
   storeData() {
-    this.timer.startTimer(1200);
-    this.stationName = document
-      .getElementById('stationName')
-      .getAttribute('data-name');
-    this.setLocalStorage();
-    this.setSessionStorage();
+    if (this.signature.drawingValidation === true) {
+      this.timer.startTimer(1200);
+      this.stationName = document
+        .getElementById('stationName')
+        .getAttribute('data-name');
+      this.setLocalStorage();
+      this.setSessionStorage();
+    } else {
+      alert('Vous avez oublié de signer ');
+    }
   }
 
   getLastName() {

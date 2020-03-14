@@ -5,6 +5,7 @@ class Signature {
     this.ctx.lineWidth = 4;
     this.ctx.lineCap = 'round';
     this.drawing = false;
+    this.drawingValidation = false;
 
     this.setListeners();
   }
@@ -20,6 +21,7 @@ class Signature {
     this.drawing = true;
     this.ctx.beginPath();
     this.ctx.lineTo(e.offsetX, e.offsetY);
+    this.drawingValidation = true;
   }
 
   finishedPosition(e) {
@@ -37,6 +39,7 @@ class Signature {
   // // clear the canvas
   clear() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.drawingValidation = false;
   }
 }
 
