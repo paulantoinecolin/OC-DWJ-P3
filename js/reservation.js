@@ -14,11 +14,12 @@ class Reservation {
     this.buttonClose.addEventListener('click', this.closeForm.bind(this));
     this.buttonClear.addEventListener('click', this.clear.bind(this));
     this.buttonSubmit.addEventListener('click', this.storeData.bind(this));
-
-    // this.buttonSubmit.addEventListener('click', () => {
-    // regex
-    //   this.storeData.bind(this);
-    // });
+    this.buttonSubmit.addEventListener('click', () => {
+      let rgx = /^[a-zA-Z][a-zA-Z-_.]{1,20}$/;
+      if (rgx.test(this.lastname.value) || rgx.test(this.firstname.value)) {
+        alert('Les champs renseignés dans le formulaire ne sont pas valides');
+      }
+    });
 
     this.timer = new Timer(timerNode, this);
     this.getLocalStorage();
@@ -59,8 +60,8 @@ class Reservation {
         .getAttribute('data-name');
       this.setLocalStorage();
       this.setSessionStorage();
-    } else {
-      alert('Vous avez oublié de signer ');
+    } else if (this.signature.drawingValidation === false) {
+      alert('Vous avez oublié de signer');
     }
   }
 
