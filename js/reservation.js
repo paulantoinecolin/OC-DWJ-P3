@@ -2,22 +2,25 @@ class Reservation {
   constructor(reservationNode, timerNode) {
     this.main = reservationNode;
 
-    this.signature = new Signature(
-      this.main.getElementsByClassName('sig-canvas')[0]
-    );
+    this.signature = new Signature(this.main.querySelector('.sig-canvas'));
 
-    this.lastname = this.main.getElementsByClassName('last-name')[0];
-    this.firstname = this.main.getElementsByClassName('first-name')[0];
-    this.buttonClear = this.main.getElementsByClassName('sig-clearBtn')[0];
-    this.buttonSubmit = this.main.getElementsByClassName('sig-submitBtn')[0];
+    // this.lastname = this.main.getElementsByClassName('last-name')[0];
+    this.lastname = this.main.querySelector('.last-name');
+    this.firstname = this.main.querySelector('.first-name');
+    this.buttonClear = this.main.querySelector('.sig-clearBtn');
+    this.buttonSubmit = this.main.querySelector('.sig-submitBtn');
 
     this.buttonClear.addEventListener('click', this.clear.bind(this));
     this.buttonSubmit.addEventListener('click', this.storeData.bind(this));
 
-    this.getLocalStorage();
-    this.getSessionStorage();
+    // this.buttonSubmit.addEventListener('click', () => {
+    // regex
+    //   this.storeData.bind(this);
+    // });
 
     this.timer = new Timer(timerNode, this);
+    this.getLocalStorage();
+    this.getSessionStorage();
   }
 
   clear() {
@@ -63,7 +66,7 @@ class Reservation {
       this.firstname.value +
       ' ' +
       this.lastname.value +
-      'Temps restant : ' +
+      ' — Temps restant : ' +
       timeLeft
     );
   }
