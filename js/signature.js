@@ -1,8 +1,6 @@
 class Signature {
   constructor(signatureNode) {
     this.canvas = signatureNode;
-    this.canvas.setAttribute('width', this.canvas.parentElement.clientWidth);
-    this.canvas.setAttribute('height', this.canvas.parentElement.clientHeight);
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineWidth = 4;
     this.ctx.lineCap = 'round';

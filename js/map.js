@@ -46,16 +46,6 @@ class Map {
       new mapboxgl.Marker(el)
         .setLngLat([station.position.longitude, station.position.latitude])
         .addTo(this.container);
-      // add popups
-      // .setPopup(
-      //   new mapboxgl.Popup({ offset: 25 }).setHTML(
-      //     '<h4 id="popup">' +
-      //       station.name +
-      //       '</br>' +
-      //       station.totalStands.availabilities.bikes +
-      //       '</h4>'
-      //   )
-      // );
 
       el.addEventListener('click', () => {
         this.onMarkerClick(station);
@@ -63,19 +53,7 @@ class Map {
     });
   }
 
-  // center Marker on clic
   onMarkerClick(station) {
-    this.container.flyTo({
-      center: [station.position.longitude, station.position.latitude],
-      zoom: 13,
-      speed: 0.2,
-      curve: 1.42,
-      maxDuration: 1,
-      easing(t) {
-        return t;
-      }
-    });
-
     // open reservation aside
     if (
       station.status === 'CLOSED' ||
@@ -94,6 +72,18 @@ class Map {
       bikeAvailable.innerHTML = station.totalStands.availabilities.bikes;
       parkingAvailable.innerHTML = station.totalStands.availabilities.stands;
     }
+
+    // center Marker on clic
+    // this.container.flyTo({
+    //   center: [station.position.longitude, station.position.latitude],
+    //   zoom: 13,
+    //   speed: 0.2,
+    //   curve: 1.42,
+    //   maxDuration: 1,
+    //   easing(t) {
+    //     return t;
+    //   }
+    // });
   }
 
   // AJAX request

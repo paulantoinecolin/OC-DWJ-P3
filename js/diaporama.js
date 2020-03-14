@@ -11,7 +11,7 @@ class Diaporama {
 
     this.setListeners();
     this.showSlides();
-    // this.playSlideshow(); // <-ENLEVER LES COMMENTAIRES POUR RELANCER LE SLIDESHOW AUTO
+    this.playSlideshow(); // <-ENLEVER LES COMMENTAIRES POUR RELANCER LE SLIDESHOW AUTO
   }
 
   setListeners() {

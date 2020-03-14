@@ -2,11 +2,9 @@ class Timer {
   constructor(timerNode, reservation) {
     this.main = timerNode;
     this.reservation = reservation;
-
     this.timerDisplay = this.main.getElementsByClassName(
       'reservationFeedback'
     )[0];
-
     if (sessionStorage.then) {
       this.then = sessionStorage.then;
       this.timer();
@@ -22,10 +20,7 @@ class Timer {
 
   timer() {
     clearInterval(this.countdown); // clear any existing timers
-
     this.displayTimeLeft(); // displayEndTime(then);
-
-    // countdown from "left time" to zero
     this.countdown = setInterval(() => {
       // check if we should stop it
       if (this.getSecondsLeft() < 0) {
@@ -43,7 +38,7 @@ class Timer {
 
   // displays the countdown in min/sec
   displayTimeLeft() {
-    let display = 'Fini ...';
+    let display = 'Votre réservation a expiré.';
     const seconds = this.getSecondsLeft();
     if (seconds >= 0) {
       const minutes = Math.floor(seconds / 60);
