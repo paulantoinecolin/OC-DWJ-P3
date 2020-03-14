@@ -13,7 +13,7 @@ class Map {
       container: 'map', // div id from index.html
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [4.859900325525473, 45.75373343249737],
-      minZoom: 11.76579926226891
+      minZoom: 12
     });
 
     this.container.addControl(new mapboxgl.NavigationControl(), 'top-left');
@@ -54,6 +54,8 @@ class Map {
   }
 
   onMarkerClick(station) {
+    // change selected marker
+
     // open reservation aside
     if (
       station.status === 'CLOSED' ||

@@ -3,14 +3,15 @@ body {
   padding: 0;
 }
 
-footer {
-  height: 300px;
+.mapboxgl-ctrl-logo {
+  display: none !important;
 }
 
 .slideshow-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
+  padding-top: 30px;
 }
 
 /* Hide the images by default */
@@ -26,11 +27,11 @@ figure {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: gray;
-  background-color: rgba(0, 0, 0, 0.2);
+  /* width: auto;
+  margin-top: -22px; */
+  /* padding: 16px; */
+  /* color: gray; */
+  /* background-color: rgba(0, 0, 0, 0.2); */
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
@@ -44,23 +45,24 @@ figure {
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover,
+/* .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
-}
+} */
 
 /* Play/Pause button */
 .btnPause {
-  cursor: pointer;
   position: absolute;
-  margin: 0 auto;
   right: 50%;
-  font-size: 20px;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  color: gray;
-  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /* cursor: pointer; */
+  /* margin: 0 auto; */
+  /* font-size: 20px; */
+  /* border: none; */
+  /* border-radius: 5px; */
+  /* padding: 10px; */
+  /* color: gray; */
+  /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
 /* Caption text */
@@ -81,10 +83,13 @@ figcaption {
 }
 
 #map {
-  margin: 0 auto;
-  margin-top: 50px;
+  /* display: block; */
+  position: relative;
+  /* top: 0; */
+  bottom: 0;
   width: 100%;
-  height: 500px;
+  height: 600px;
+  /* height: 80vw; 100% */
 }
 
 #menu {
@@ -99,34 +104,45 @@ figcaption {
 }
 
 .marker-red {
-  background-image: url('../ico/bike_red.svg');
-  background-size: cover;
-  width: 31px;
-  height: 31px;
+  background-image: url('../ico/material_bike.svg');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(233, 67, 53);
+  /* border: 0.5px solid black; */
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .marker-green {
-  background-image: url('../ico/bike.svg');
-  background-size: cover;
-  background-color: green;
-  width: 31px;
-  height: 31px;
+  background-image: url('../ico/material_bike.svg');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(77, 181, 70);
+  /* border: 0.5px solid black; */
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .marker-closed {
-  background-image: url('../ico/closed.svg');
-  background-size: cover;
-  width: 31px;
-  height: 31px;
+  background-image: url('../ico/build.svg');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(233, 67, 53);
+  /* border: 0.5px solid black; */
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.mapboxgl-popup {
+/* .mapboxgl-popup {
   max-width: 500px;
   font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
@@ -139,20 +155,24 @@ figcaption {
 .mapboxgl-popup-content {
   border-radius: 15px;
   padding: 0px 20px;
-}
+} */
 
 #reservation {
   display: none;
   position: absolute;
-  width: 20%;
-  height: 450px;
-  top: 520px;
+  width: 30%;
+  height: auto;
+  top: 510px;
   right: 0;
   bottom: 0;
-  padding: 25px;
-  background: #fff;
-  border-radius: 15px 0px 0px 15px;
-  box-shadow: 1px 1px 10px black;
+  padding: 20px;
+}
+
+.delete {
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 p {
@@ -204,12 +224,23 @@ input {
   float: left;
 }
 
+.signature {
+  padding-top: 20px;
+}
+
 #reservation .sig-canvas {
+  margin-top: 10px;
   border: 2px dotted #cccccc;
   border-radius: 15px;
   cursor: crosshair;
 }
 
 #timer {
-  margin: 20px;
+  position: relative;
+  top: -19px;
+  background-color: #323232;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
 }
