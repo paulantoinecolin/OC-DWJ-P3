@@ -2,9 +2,7 @@ class Timer {
   constructor(timerNode, reservation) {
     this.main = timerNode;
     this.reservation = reservation;
-    this.timerDisplay = this.main.getElementsByClassName(
-      'reservationFeedback'
-    )[0];
+    this.timerDisplay = this.main.querySelector('.reservationFeedback');
     if (sessionStorage.then) {
       this.then = sessionStorage.then;
       this.timer();
