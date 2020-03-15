@@ -236,6 +236,7 @@ input {
 }
 
 #timer {
+  display: none;
   position: relative;
   top: -19px;
   background-color: #323232;

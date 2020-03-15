@@ -70,6 +70,7 @@ class Reservation {
   }
 
   getReservationMessage(timeLeft) {
+    document.getElementById('timer').style.display = 'block';
     return (
       'Vélo réservé à la station ' +
       this.stationName +
