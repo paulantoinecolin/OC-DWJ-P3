@@ -1,8 +1,10 @@
 class Reservation {
   constructor(reservationNode, timerNode) {
     this.main = reservationNode;
+    this.rgx = /^[a-zA-Z][a-zA-Z-_.]{1,20}$/;
 
     this.signature = new Signature(this.main.querySelector('.sig-canvas'));
+    this.drawingTrue = this.signature.drawingValidation;
 
     // this.lastname = this.main.getElementsByClassName('last-name')[0];
     this.lastname = this.main.querySelector('.last-name');
@@ -14,16 +16,16 @@ class Reservation {
     this.buttonClose.addEventListener('click', this.closeForm.bind(this));
     this.buttonClear.addEventListener('click', this.clear.bind(this));
     this.buttonSubmit.addEventListener('click', this.storeData.bind(this));
-    this.buttonSubmit.addEventListener('click', () => {
-      let rgx = /^[a-zA-Z][a-zA-Z-_.]{1,20}$/;
-      if (rgx.test(this.lastname.value) || rgx.test(this.firstname.value)) {
-        alert('Les champs renseignés dans le formulaire ne sont pas valides');
-      }
-    });
+    this.lastname.addEventListener('blur', this.lastnameValidation.bind(this));
+    this.firstname.addEventListener(
+      'blur',
+      this.firstnameValidation.bind(this)
+    );
 
     this.timer = new Timer(timerNode, this);
     this.getLocalStorage();
     this.getSessionStorage();
+    this.reservationValidation();
   }
 
   closeForm() {
@@ -52,17 +54,40 @@ class Reservation {
     sessionStorage.stationName = this.stationName;
   }
 
-  storeData() {
-    if (this.signature.drawingValidation === true) {
-      this.timer.startTimer(1200);
-      this.stationName = document
-        .getElementById('stationName')
-        .getAttribute('data-name');
-      this.setLocalStorage();
-      this.setSessionStorage();
-    } else if (this.signature.drawingValidation === false) {
-      alert('Vous avez oublié de signer');
+  lastnameValidation() {
+    if (this.rgx.test(this.lastname.value) == false) {
+      this.lastname.classList.remove('is-success');
+      this.lastname.classList.add('is-danger');
+    } else if (this.rgx.test(this.lastname.value) == true) {
+      this.lastname.classList.remove('is-danger');
+      this.lastname.classList.add('is-success');
     }
+  }
+
+  firstnameValidation() {
+    if (this.rgx.test(this.firstname.value) == false) {
+      this.firstname.classList.remove('is-success');
+      this.firstname.classList.add('is-danger');
+    } else if (this.rgx.test(this.firstname.value) == true) {
+      this.firstname.classList.remove('is-danger');
+      this.firstname.classList.add('is-success');
+    }
+  }
+
+  reservationValidation() {
+    if (this.lastname.classList.contains('is-success')) {
+      console.log('lasname is ok');
+      // this.buttonSubmit.disabled = false;
+    }
+  }
+
+  storeData() {
+    this.timer.startTimer(1200);
+    this.stationName = document
+      .getElementById('stationName')
+      .getAttribute('data-name');
+    this.setLocalStorage();
+    this.setSessionStorage();
   }
 
   getLastName() {
@@ -70,7 +95,6 @@ class Reservation {
   }
 
   getReservationMessage(timeLeft) {
-    document.getElementById('timer').style.display = 'block';
     return (
       'Vélo réservé à la station ' +
       this.stationName +

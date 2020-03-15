@@ -43,16 +43,25 @@
 
       <div class="navigation" id="navigation">
         <!-- Next and previous buttons -->
-        <div class="button is-primary is-rounded prev">&#10094;</div>
-        <div class="button is-primary is-rounded next">&#10095;</div>
+        <span class="icon is-large prev">
+          <i class="fas fa-chevron-circle-left"></i>
+        </span>
+        <span class="icon is-large next">
+          <i class="fas fa-chevron-circle-right"></i>
+        </span>
+        <!-- <div class="button is-primary is-rounded prev">&#10094;</div> -->
+        <!-- <div class="button is-primary is-rounded next">&#10095;</div> -->
 
         <!-- Play/Pause button -->
       </div>
-      <button
+      <span class="icon is-large ">
+        <i class="fas fa-pause-circle btnPause"></i>
+      </span>
+      <!-- <button
         class="button is-primary is-rounded  btnPause fas fa-pause-circle"
         id="pause"
       ></button>
-      <br />
+      <br /> -->
     </div>
 
   
@@ -73,9 +82,6 @@
         <label>Nom</label>
           <div class="control">
         <input type="text" name="last-name" class="input is-small last-name stored" value="" placeholder="Nom" />
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
         <br />
         <label>Prénom</label>
         <div class="control"></div>
@@ -108,7 +114,7 @@
             Effacer
           </button>
           <button
-          class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button"
+          class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button" disabled
         >
           Réserver
         </button>
