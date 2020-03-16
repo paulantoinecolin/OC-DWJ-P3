@@ -130,21 +130,11 @@
       </div>
     </div>
 
+    <script src='js/start.js'></script>
     <script src="js/diaporama.js"></script>
     <script src="js/signature.js"></script>
     <script src="js/reservation.js"></script>
     <script src="js/map.js"></script>
     <script src="js/timer.js"></script>
-
-    <script>
-      window.onload = function() {
-        const diaporama = new Diaporama('diapo');
-        const map = new Map(document.getElementById('map'));
-        const reservation = new Reservation(
-          document.getElementById('reservation'),
-          document.getElementById('timer')
-        );
-      };
-    </script>
   </body>
 </html>

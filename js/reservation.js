@@ -3,8 +3,10 @@ class Reservation {
     this.main = reservationNode;
     this.rgx = /^[a-zA-Z][a-zA-Z-_.]{1,20}$/;
 
-    this.signature = new Signature(this.main.querySelector('.sig-canvas'));
-    this.drawingTrue = this.signature.drawingValidation;
+    this.signature = new Signature(
+      this.main.querySelector('.sig-canvas'),
+      this
+    );
 
     // this.lastname = this.main.getElementsByClassName('last-name')[0];
     this.lastname = this.main.querySelector('.last-name');
@@ -16,16 +18,18 @@ class Reservation {
     this.buttonClose.addEventListener('click', this.closeForm.bind(this));
     this.buttonClear.addEventListener('click', this.clear.bind(this));
     this.buttonSubmit.addEventListener('click', this.storeData.bind(this));
-    this.lastname.addEventListener('blur', this.lastnameValidation.bind(this));
+    this.lastname.addEventListener(
+      'blur',
+      this.reservationValidation.bind(this)
+    );
     this.firstname.addEventListener(
       'blur',
-      this.firstnameValidation.bind(this)
+      this.reservationValidation.bind(this)
     );
 
     this.timer = new Timer(timerNode, this);
     this.getLocalStorage();
     this.getSessionStorage();
-    this.reservationValidation();
   }
 
   closeForm() {
@@ -54,30 +58,27 @@ class Reservation {
     sessionStorage.stationName = this.stationName;
   }
 
-  lastnameValidation() {
-    if (this.rgx.test(this.lastname.value) == false) {
-      this.lastname.classList.remove('is-success');
-      this.lastname.classList.add('is-danger');
-    } else if (this.rgx.test(this.lastname.value) == true) {
-      this.lastname.classList.remove('is-danger');
-      this.lastname.classList.add('is-success');
-    }
-  }
-
-  firstnameValidation() {
-    if (this.rgx.test(this.firstname.value) == false) {
-      this.firstname.classList.remove('is-success');
-      this.firstname.classList.add('is-danger');
-    } else if (this.rgx.test(this.firstname.value) == true) {
-      this.firstname.classList.remove('is-danger');
-      this.firstname.classList.add('is-success');
+  checkInput(el) {
+    if (this.rgx.test(el.value) == false) {
+      el.classList.remove('is-success');
+      el.classList.add('is-danger');
+      return false;
+    } else {
+      el.classList.remove('is-danger');
+      el.classList.add('is-success');
+      return true;
     }
   }
 
   reservationValidation() {
-    if (this.lastname.classList.contains('is-success')) {
-      console.log('lasname is ok');
-      // this.buttonSubmit.disabled = false;
+    const step1 = this.checkInput(this.lastname);
+    const step2 = this.checkInput(this.firstname);
+    const step3 = this.signature.drawingValidation;
+    console.log(step1, step2, step3);
+    if (step1 && step2 && step3) {
+      this.buttonSubmit.disabled = false;
+    } else {
+      this.buttonSubmit.disabled = true;
     }
   }
 

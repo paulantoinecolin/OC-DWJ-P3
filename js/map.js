@@ -76,16 +76,16 @@ class Map {
     }
 
     // center Marker on clic
-    // this.container.flyTo({
-    //   center: [station.position.longitude, station.position.latitude],
-    //   zoom: 13,
-    //   speed: 0.2,
-    //   curve: 1.42,
-    //   maxDuration: 1,
-    //   easing(t) {
-    //     return t;
-    //   }
-    // });
+    this.container.flyTo({
+      center: [station.position.longitude, station.position.latitude],
+      zoom: 13,
+      speed: 0.2,
+      curve: 1.42,
+      maxDuration: 1,
+      easing(t) {
+        return t;
+      }
+    });
   }
 
   // AJAX request

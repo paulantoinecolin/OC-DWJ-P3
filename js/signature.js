@@ -1,5 +1,6 @@
 class Signature {
-  constructor(signatureNode) {
+  constructor(signatureNode, reservation) {
+    this.reservation = reservation;
     this.canvas = signatureNode;
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineWidth = 4;
@@ -22,6 +23,7 @@ class Signature {
     this.ctx.beginPath();
     this.ctx.lineTo(e.offsetX, e.offsetY);
     this.drawingValidation = true;
+    this.reservation.reservationValidation();
   }
 
   finishedPosition(e) {
@@ -40,7 +42,6 @@ class Signature {
   clear() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawingValidation = false;
+    this.reservation.reservationValidation();
   }
 }
-
-// const signature = new Signature('sig-canvas');
