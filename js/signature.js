@@ -9,6 +9,7 @@ class Signature {
     this.drawingValidation = false;
 
     this.setListeners();
+    this.calibrate();
   }
 
   setListeners() {
@@ -16,6 +17,12 @@ class Signature {
     this.canvas.addEventListener('mouseup', this.finishedPosition.bind(this));
     this.canvas.addEventListener('mousemove', this.sign.bind(this));
     this.canvas.addEventListener('mouseout', this.finishedPosition.bind(this));
+
+    this.canvas.addEventListener('touchstart', this.startPosition.bind(this));
+    this.canvas.addEventListener('touchend', this.finishedPosition.bind(this));
+    this.canvas.addEventListener('touchmove', this.sign.bind(this));
+
+    this.canvas.addEventListener('resize', this.calibrate.bind(this));
   }
 
   startPosition(e) {
@@ -43,5 +50,9 @@ class Signature {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawingValidation = false;
     this.reservation.reservationValidation();
+  }
+
+  calibrate() {
+    this.canvas.width = this.canvas.clientWidth;
   }
 }

@@ -1,6 +1,12 @@
+html,
 body {
+  height: 100%;
   margin: 0;
+}
+
+body {
   padding: 0;
+  background-color: #fbfafa;
 }
 
 .mapboxgl-ctrl-logo {
@@ -10,7 +16,7 @@ body {
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   /* margin-bottom: 30px 0px; */
 }
 
@@ -27,45 +33,34 @@ figure {
   cursor: pointer;
   position: absolute;
   top: 35%;
-  /* width: auto;
-  margin-top: -22px; */
-  /* padding: 16px; */
-  /* color: gray; */
-  /* background-color: rgba(0, 0, 0, 0.2); */
-  font-weight: bold;
-  font-size: 35px;
-  transition: 0.6s ease;
-  user-select: none;
-  /* border-radius: 5px; */
+  font-size: 2em;
+  border-radius: 50%;
 }
 
 /* Position the "next button" to the right */
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
-
-/* .prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-} */
 
 /* Play/Pause button */
 .btnPause {
+  display: block;
+  cursor: pointer;
   position: absolute;
   top: 470px;
   right: 50%;
-  z-index: 1;
-  font-weight: bold;
-  font-size: 35px;
-  /* cursor: pointer; */
-  /* margin: 0 auto; */
-  /* font-size: 20px; */
-  /* border: none; */
-  /* border-radius: 5px; */
-  /* padding: 10px; */
-  /* color: gray; */
-  /* background-color: rgba(0, 0, 0, 0.2); */
+  font-size: 1em;
+  text-align: center;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.prev:hover,
+.next:hover,
+.btnPause:hover {
+  background-color: white;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
 }
 
 /* Caption text */
@@ -86,12 +81,12 @@ figcaption {
 }
 
 #map {
-  /* display: block; */
-  position: relative;
-  /* top: 0; */
-  bottom: 0;
+  display: block;
+  position: absolute;
+  top: 550px;
+  bottom: 0px;
   width: 100%;
-  height: 600px;
+  height: auto !important;
   /* height: 80vw; 100% */
 }
 
@@ -164,8 +159,8 @@ figcaption {
   display: none;
   position: absolute;
   width: 30%;
-  height: auto;
-  top: 510px;
+  height: 610px;
+  top: 50%;
   right: 0;
   bottom: 0;
   padding: 20px;
@@ -185,16 +180,26 @@ p {
 
 .availabilities {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-#bikeAvailable,
+.availabilities > .icon {
+  border: 2px solid rgb(77, 181, 70);
+  border-radius: 50%;
+  margin: 5px;
+  font-weight: bold;
+}
+
+/* #bikeAvailable,
 #parkingAvailable {
   margin-left: 20px;
 }
 
 #bikeAvailable:after {
   content: url('../ico/bicycle.svg');
+  display: inline-block;
   position: relative;
   top: 12px;
   left: 10px;
@@ -203,9 +208,10 @@ p {
 #parkingAvailable:after {
   content: url('../ico/parking-white.svg');
   position: relative;
+  display: inline-block;
   top: 12px;
   left: 10px;
-}
+} */
 
 #formulaire {
   padding-top: 30px;
@@ -231,20 +237,42 @@ input {
   padding-top: 20px;
 }
 
+.row > .signature {
+  position: relative;
+  display: block;
+  margin-left: 10px;
+}
+
 #reservation .sig-canvas {
-  margin-top: 10px;
+  display: block;
+  margin: 0 auto;
   border: 2px dotted #cccccc;
   border-radius: 15px;
+  width: 100%;
+  height: 7vh;
   cursor: crosshair;
+}
+
+.sig-clearBtn {
+  cursor: pointer;
+  position: relative;
+  left: 5%;
+}
+
+.sig-submitBtn {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: rgb(77, 181, 70) !important;
 }
 
 #timer {
   display: block;
-  position: relative;
-  top: -19px;
+  position: absolute;
   background-color: #323232;
-  padding: 10px;
-  color: white;
+  width: 100%;
   text-align: center;
   font-weight: bold;
+  bottom: -25px;
 }

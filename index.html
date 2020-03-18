@@ -44,10 +44,10 @@
       <div class="navigation" id="navigation">
         <!-- Next and previous buttons -->
         <span class="icon is-large prev">
-          <i class="fas fa-chevron-circle-left"></i>
+          <i class="fas fa-chevron-left"></i>
         </span>
         <span class="icon is-large next">
-          <i class="fas fa-chevron-circle-right"></i>
+          <i class="fas fa-chevron-right"></i>
         </span>
         <!-- <div class="button is-primary is-rounded prev">&#10094;</div> -->
         <!-- <div class="button is-primary is-rounded next">&#10095;</div> -->
@@ -55,7 +55,7 @@
         <!-- Play/Pause button -->
       </div>
       <span class="icon is-large ">
-        <i class="fas fa-pause-circle btnPause"></i>
+        <i class="fas fa-pause btnPause"></i>
       </span>
       <!-- <button
         class="button is-primary is-rounded  btnPause fas fa-pause-circle"
@@ -64,26 +64,30 @@
       <br /> -->
     </div>
 
-  
+
     <div id="map"></div>
 
     <aside id="reservation" class="card">
       <button class="delete is-small"></button>
       <section class="container">
+        <div class="availabilities">
+          <p id="bikeAvailable"></p><span class="icon is-medium">
+            <i class="fas fa-bicycle"></i>
+          </span>
+          <p id="parkingAvailable"></p><span class="icon is-medium">
+            P
+          </span>
+        </div>
       <p id="stationName"></p>
       <p id="stationAddress"></p>
-      <div class="availabilities">
-        <div id="bikeAvailable"></div>
-        <div id="parkingAvailable"></div>
-      </div>
     </section>
 
       <form id="formulaire" method="post" action="">
-        <label>Nom</label>
+        <label>NOM</label>
           <div class="control">
         <input type="text" name="last-name" class="input is-small last-name stored" value="" placeholder="Nom" />
         <br />
-        <label>Prénom</label>
+        <label>PRÉNOM</label>
         <div class="control"></div>
         <input
           type="text"
@@ -94,25 +98,19 @@
           </div>
       </div>
     </div>
-       
-        
       </form>
 
       <div class="signature">
         <div class="row">
-          <p>Signature</p>
+          <p>Signature<i class="fas fa-lg fa-eraser sig-clearBtn"></i></p> 
+          <div class="row">    
         </div>
-        <div class="row">
-          <canvas class="sig-canvas" width="160" height="100">
+          <canvas class="sig-canvas">
             Veuillez mettre à jour votre navigateur.
           </canvas>
         </div>
         <div class="row">
-          <button
-            class="button is-primary is-small is-rounded sig-clearBtn btn btn-default"
-          >
-            Effacer
-          </button>
+
           <button
           class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button" disabled
         >
@@ -121,11 +119,10 @@
         </div>
       </div>
     </aside>
-
     
 
-    <div id="timer">
-      <div class="display">
+    <div id="timer" class="block">
+      <div class="display notification">
         <p class="reservationFeedback"></p>
       </div>
     </div>

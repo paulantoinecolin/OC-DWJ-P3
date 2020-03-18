@@ -45,7 +45,7 @@ class Diaporama {
 
   // automatic Slideshow
   playSlideshow() {
-    this.pauseButton.classList.replace('fa-play-circle', 'fa-pause-circle');
+    this.pauseButton.classList.replace('fa-play', 'fa-pause');
     this.playing = true;
     this.slideInterval = setInterval(() => {
       this.plusSlides(1);
@@ -66,7 +66,7 @@ class Diaporama {
 
   // Play/Pause controls
   pauseSlideshow() {
-    this.pauseButton.classList.replace('fa-pause-circle', 'fa-play-circle');
+    this.pauseButton.classList.replace('fa-pause', 'fa-play');
     this.playing = false;
     clearInterval(this.slideInterval);
   }

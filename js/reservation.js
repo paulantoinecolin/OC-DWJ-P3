@@ -74,7 +74,6 @@ class Reservation {
     const step1 = this.checkInput(this.lastname);
     const step2 = this.checkInput(this.firstname);
     const step3 = this.signature.drawingValidation;
-    console.log(step1, step2, step3);
     if (step1 && step2 && step3) {
       this.buttonSubmit.disabled = false;
     } else {
