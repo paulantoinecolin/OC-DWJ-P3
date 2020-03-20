@@ -44,7 +44,7 @@ figure {
 /* Play/Pause button */
 .btnPausePosition {
   position: relative;
-  margin: -4% auto;
+  margin: 0 auto;
   text-align: center;
   width: 50%;
 }
@@ -135,12 +135,23 @@ figcaption {
 #reservation {
   z-index: 1;
   display: none;
-  float: right;
+  position: relative;
+  margin: 10% auto;
+  text-align: center;
   background-color: white;
   width: 300px;
   height: 520px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
+/* #reservation {
+  z-index: 1;
+  display: none;
+  float: right;
+  background-color: white;
+  width: 300px;
+  height: 520px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+} */
 
 .stationCard p {
   padding: 10px 15px;
