@@ -82,7 +82,7 @@ class Reservation {
   }
 
   storeData() {
-    this.timer.startTimer(1200);
+    this.timer.startTimer(1);
     this.stationName = document
       .getElementById('stationName')
       .getAttribute('data-name');
