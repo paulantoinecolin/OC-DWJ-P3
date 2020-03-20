@@ -13,7 +13,7 @@ class Map {
       container: 'map', // div id from index.html
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [4.859900325525473, 45.75373343249737],
-      minZoom: 12
+      minZoom: 13
     });
 
     this.container.addControl(new mapboxgl.NavigationControl(), 'top-left');
@@ -54,8 +54,6 @@ class Map {
   }
 
   onMarkerClick(station) {
-    // change selected marker
-
     // open reservation aside
     if (
       station.status === 'CLOSED' ||
@@ -76,16 +74,16 @@ class Map {
     }
 
     // center Marker on clic
-    this.container.flyTo({
-      center: [station.position.longitude, station.position.latitude],
-      zoom: 13,
-      speed: 0.2,
-      curve: 1.42,
-      maxDuration: 1,
-      easing(t) {
-        return t;
-      }
-    });
+    // this.container.flyTo({
+    //   center: [station.position.longitude, station.position.latitude],
+    //   zoom: 13,
+    //   speed: 0.2,
+    //   curve: 1.42,
+    //   maxDuration: 1,
+    //   easing(t) {
+    //     return t;
+    //   }
+    // });
   }
 
   // AJAX request

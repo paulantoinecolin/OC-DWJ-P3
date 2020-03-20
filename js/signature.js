@@ -2,6 +2,8 @@ class Signature {
   constructor(signatureNode, reservation) {
     this.reservation = reservation;
     this.canvas = signatureNode;
+    // this.canvas.setAttribute('width', this.canvas.parentElement.clientWidth);
+    // this.canvas.setAttribute('height', this.canvas.parentElement.clientHeight);
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineWidth = 4;
     this.ctx.lineCap = 'round';
@@ -9,7 +11,6 @@ class Signature {
     this.drawingValidation = false;
 
     this.setListeners();
-    this.calibrate();
   }
 
   setListeners() {
@@ -21,8 +22,6 @@ class Signature {
     this.canvas.addEventListener('touchstart', this.startPosition.bind(this));
     this.canvas.addEventListener('touchend', this.finishedPosition.bind(this));
     this.canvas.addEventListener('touchmove', this.sign.bind(this));
-
-    this.canvas.addEventListener('resize', this.calibrate.bind(this));
   }
 
   startPosition(e) {
@@ -50,9 +49,5 @@ class Signature {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawingValidation = false;
     this.reservation.reservationValidation();
-  }
-
-  calibrate() {
-    this.canvas.width = this.canvas.clientWidth;
   }
 }

@@ -54,9 +54,11 @@
 
         <!-- Play/Pause button -->
       </div>
-      <span class="icon is-large ">
+      <div class="btnPausePosition">
+      <span class="icon is-large">
         <i class="fas fa-pause btnPause"></i>
       </span>
+    </div>
       <!-- <button
         class="button is-primary is-rounded  btnPause fas fa-pause-circle"
         id="pause"
@@ -67,10 +69,10 @@
 
     <div id="map"></div>
 
-    <aside id="reservation" class="card">
+    <aside id="reservation" class="container">
       <button class="delete is-small"></button>
-      <section class="container">
-        <div class="availabilities">
+      <section class="message">
+        <div class="availabilities message-header">
           <p id="bikeAvailable"></p><span class="icon is-medium">
             <i class="fas fa-bicycle"></i>
           </span>
@@ -78,23 +80,28 @@
             P
           </span>
         </div>
+        <div class="stationCard">
       <p id="stationName"></p>
       <p id="stationAddress"></p>
+    </div>
     </section>
 
       <form id="formulaire" method="post" action="">
-        <label>NOM</label>
+        <div class="field">
+        <label class="label is-small">NOM</label>
           <div class="control">
-        <input type="text" name="last-name" class="input is-small last-name stored" value="" placeholder="Nom" />
-        <br />
-        <label>PRÉNOM</label>
+        <input type="text" name="last-name" class="input is-small is-rounded last-name stored" value="" />
+      </div>
+      <div class="field">
+        <label class="label is-small">PRÉNOM</label>
         <div class="control"></div>
         <input
           type="text"
           name="first-name"
-          class="input is-small first-name stored"
+          class="input is-small is-rounded first-name stored"
           value=""
         />
+      </div>
           </div>
       </div>
     </div>
@@ -103,9 +110,9 @@
       <div class="signature">
         <div class="row">
           <p>Signature<i class="fas fa-lg fa-eraser sig-clearBtn"></i></p> 
-          <div class="row">    
+          <div class="row">
         </div>
-          <canvas class="sig-canvas">
+          <canvas class="sig-canvas" width="270" height="120">
             Veuillez mettre à jour votre navigateur.
           </canvas>
         </div>
@@ -114,7 +121,7 @@
           <button
           class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button" disabled
         >
-          Réserver
+          RÉSERVER
         </button>
         </div>
       </div>

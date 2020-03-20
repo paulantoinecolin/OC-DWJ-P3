@@ -88,6 +88,7 @@ class Reservation {
       .getAttribute('data-name');
     this.setLocalStorage();
     this.setSessionStorage();
+    this.closeForm();
   }
 
   getLastName() {
@@ -95,6 +96,7 @@ class Reservation {
   }
 
   getReservationMessage(timeLeft) {
+    document.getElementById('timer').style.display = 'block';
     return (
       'Vélo réservé à la station ' +
       this.stationName +
@@ -102,7 +104,7 @@ class Reservation {
       this.firstname.value +
       ' ' +
       this.lastname.value +
-      ' — Temps restant : ' +
+      ' -  ' +
       timeLeft
     );
   }

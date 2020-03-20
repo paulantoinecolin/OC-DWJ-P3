@@ -36,7 +36,7 @@ class Timer {
 
   // displays the countdown in min/sec
   displayTimeLeft() {
-    let display = 'Votre réservation a expiré.';
+    let display = 'Votre réservation a expiré';
     const seconds = this.getSecondsLeft();
     if (seconds >= 0) {
       const minutes = Math.floor(seconds / 60);
