@@ -1,7 +1,7 @@
 class Reservation {
   constructor(reservationNode, timerNode) {
     this.main = reservationNode;
-    this.rgx = /^[a-zA-Z][a-zA-Z-_.]{1,20}$/;
+    this.rgx = /^[a-zA-Z][a-zA-Z-_. ]{1,20}$/;
 
     this.signature = new Signature(
       this.main.querySelector('.sig-canvas'),
@@ -82,7 +82,7 @@ class Reservation {
   }
 
   storeData() {
-    this.timer.startTimer(1);
+    this.timer.startTimer(1200);
     this.stationName = document
       .getElementById('stationName')
       .getAttribute('data-name');

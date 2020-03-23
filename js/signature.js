@@ -9,7 +9,6 @@ class Signature {
     this.ctx.lineCap = 'round';
     this.drawing = false;
     this.drawingValidation = false;
-
     this.setListeners();
   }
 
@@ -26,8 +25,17 @@ class Signature {
 
   startPosition(e) {
     this.drawing = true;
-    this.ctx.beginPath();
-    this.ctx.lineTo(e.offsetX, e.offsetY);
+    if (e.type == 'mousedown') {
+      this.ctx.beginPath();
+      this.ctx.lineTo(e.offsetX, e.offsetY);
+    } else if (e.type == 'touchstart') {
+      let rect = this.canvas.getBoundingClientRect();
+      let x = e.targetTouches[0].clientX - rect.left;
+      let y = e.targetTouches[0].clientY - rect.top;
+      this.ctx.beginPath();
+      this.ctx.moveTo(x, y);
+      e.preventDefault();
+    }
     this.drawingValidation = true;
     this.reservation.reservationValidation();
   }
@@ -35,12 +43,23 @@ class Signature {
   finishedPosition(e) {
     this.drawing = false;
     this.ctx.closePath();
+    e.preventDefault();
   }
 
   sign(e) {
     if (this.drawing == true) {
-      this.ctx.lineTo(e.offsetX, e.offsetY);
-      this.ctx.stroke();
+      if (e.type == 'mousemove') {
+        this.ctx.lineTo(e.offsetX, e.offsetY);
+        this.ctx.stroke();
+      } else if (e.type == 'touchmove') {
+        console.log('touchmove');
+        let rect = this.canvas.getBoundingClientRect();
+        let x = e.targetTouches[0].clientX - rect.left;
+        let y = e.targetTouches[0].clientY - rect.top;
+        this.ctx.lineTo(x, y);
+        this.ctx.stroke();
+        e.preventDefault();
+      }
     }
   }
 
@@ -51,3 +70,44 @@ class Signature {
     this.reservation.reservationValidation();
   }
 }
+
+// startPosition(e) {
+//   e.preventDefault();
+//   this.drawing = true;
+//   switch (e.pointerType) {
+//     case 'mouse':
+//       this.ctx.beginPath();
+//       this.ctx.lineTo(e.offsetX, e.offsetY);
+//       break;
+//     case 'touch':
+//       console.log('touchstart');
+//       let rect = this.canvas.getBoundingClientRect();
+//       let x = e.targetTouches[0].clientX - rect.left;
+//       let y = e.targetTouches[0].clientY - rect.top;
+//       this.ctx.beginPath();
+//       this.ctx.moveTo(x, y);
+//       break;
+//   }
+//   this.drawingValidation = true;
+//   this.reservation.reservationValidation();
+// }
+
+// sign(e) {
+//   e.preventDefault();
+//   if (this.drawing == true) {
+//     switch (e.pointerType) {
+//       case 'mouse':
+//         this.ctx.lineTo(e.offsetX, e.offsetY);
+//         this.ctx.stroke();
+//         break;
+//       case 'touch':
+//         console.log('touchmove');
+//         let rect = this.canvas.getBoundingClientRect();
+//         let x = e.targetTouches[0].clientX - rect.left;
+//         let y = e.targetTouches[0].clientY - rect.top;
+//         this.ctx.lineTo(x, y);
+//         this.ctx.stroke();
+//         break;
+//     }
+//   }
+// }

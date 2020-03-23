@@ -25,6 +25,10 @@ figure {
   text-align: center;
 }
 
+img {
+  border-radius: 0 0 25px 25px;
+}
+
 /* Next & previous buttons */
 .prev,
 .next {
@@ -143,6 +147,7 @@ figcaption {
   height: 520px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
+
 /* #reservation {
   z-index: 1;
   display: none;
