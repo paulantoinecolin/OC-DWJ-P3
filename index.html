@@ -65,70 +65,70 @@
       <br /> -->
     </div>
 
-    <div id="map"></div>
-
-    <aside id="reservation" class="reservation container">
-      <button class="delete is-small"></button>
-      <div class="message">
-        <div class="availabilities message-header">
-          <p id="bikeAvailable"></p>
-          <span class="icon is-medium">
-            <i class="fas fa-bicycle"></i>
-          </span>
-          <p id="parkingAvailable"></p>
-          <span class="icon is-medium">
-            P
-          </span>
-        </div>
-        <div class="stationCard">
-          <p id="stationName"></p>
-          <p id="stationAddress"></p>
-        </div>
-      </div>
-
-      <form id="formulaire" method="post">
-        <div class="field">
-          <label class="label is-small">NOM</label>
-          <div class="control">
-            <input
-              type="text"
-              name="last-name"
-              class="input is-small is-rounded last-name stored"
-              value=""
-            />
+    <div id="map">
+      <aside id="reservation" class="reservation container">
+        <button class="delete is-small"></button>
+        <div class="message">
+          <div class="availabilities message-header">
+            <p id="bikeAvailable"></p>
+            <span class="icon is-medium">
+              <i class="fas fa-bicycle"></i>
+            </span>
+            <p id="parkingAvailable"></p>
+            <span class="icon is-medium">
+              P
+            </span>
           </div>
+          <div class="stationCard">
+            <p id="stationName"></p>
+            <p id="stationAddress"></p>
+          </div>
+        </div>
+
+        <form id="formulaire" method="post">
           <div class="field">
-            <label class="label is-small">PRÉNOM</label>
+            <label class="label is-small">NOM</label>
             <div class="control">
               <input
                 type="text"
-                name="first-name"
-                class="input is-small is-rounded first-name stored"
+                name="last-name"
+                class="input is-small is-rounded last-name stored"
                 value=""
               />
             </div>
+            <div class="field">
+              <label class="label is-small">PRÉNOM</label>
+              <div class="control">
+                <input
+                  type="text"
+                  name="first-name"
+                  class="input is-small is-rounded first-name stored"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="signature">
+          <div class="row">
+            <p>Signature<i class="fas fa-lg fa-eraser sig-clearBtn"></i></p>
+            <div class="row"></div>
+            <canvas class="sig-canvas" width="270" height="120">
+              Veuillez mettre à jour votre navigateur.
+            </canvas>
+          </div>
+          <div class="row">
+            <button
+              class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button"
+              disabled
+            >
+              RÉSERVER
+            </button>
           </div>
         </div>
-      </form>
-
-      <div class="signature">
-        <div class="row">
-          <p>Signature<i class="fas fa-lg fa-eraser sig-clearBtn"></i></p>
-          <div class="row"></div>
-          <canvas class="sig-canvas" width="270" height="120">
-            Veuillez mettre à jour votre navigateur.
-          </canvas>
-        </div>
-        <div class="row">
-          <button
-            class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button"
-            disabled
-          >
-            RÉSERVER
-          </button>
-        </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
 
     <div id="timer" class="block">
       <div class="display notification">

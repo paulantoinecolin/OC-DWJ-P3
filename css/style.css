@@ -91,11 +91,9 @@ figcaption {
 #map {
   display: block;
   position: absolute;
-  top: 45%;
-  bottom: 0%;
+  top: 557px;
   width: 100%;
-  height: auto !important;
-  /* height: 80vw; 100% */
+  height: 720px;
 }
 
 /* #menu {
@@ -138,7 +136,7 @@ figcaption {
 }
 
 .reservation {
-  z-index: 1;
+  z-index: 10;
   display: none;
   float: right;
   background-color: white;
@@ -218,8 +216,6 @@ form {
   margin: 0 auto;
   border: 2px dotted #cccccc;
   border-radius: 15px;
-  /* width: 100%;
-  height: 7vh; */
   cursor: crosshair;
 }
 
@@ -240,7 +236,7 @@ form {
   position: relative;
   display: block;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: rgb(77, 181, 70) !important;
   font-weight: bold;
 }
@@ -257,9 +253,41 @@ form {
 /* Version mobile */
 @media screen and (max-width: 480px) {
   .reservation {
-    position: relative;
+    position: absolute;
     margin: 0 auto;
-    top: 15%;
+    bottom: 0;
+    height: 450px;
     right: 8.5%;
+  }
+
+  #map {
+    display: block;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 450px;
+  }
+
+  .stationCard p {
+    padding: 0px;
+  }
+
+  .availabilities {
+    padding: 5px;
+  }
+}
+
+/* Version tablette */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #map {
+    height: 468px;
+  }
+
+  .stationCard p {
+    padding: 0px;
+  }
+
+  .availabilities {
+    padding: 5px;
   }
 }
