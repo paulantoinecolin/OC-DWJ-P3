@@ -9,18 +9,19 @@ class Timer {
     }
   }
 
-  // launch the timer
+  // Define timer duration by timestamp
   startTimer(seconds) {
     this.then = Date.now() + seconds * 1000; // Time duration value (in seconds)
     sessionStorage.then = this.then;
     this.timer();
   }
 
+  // launch the timer
   timer() {
     clearInterval(this.countdown); // clear any existing timers
     this.displayTimeLeft(); // displayEndTime(then);
     this.countdown = setInterval(() => {
-      // check if we should stop it
+      // check if timer should be stopped
       if (this.getSecondsLeft() < 0) {
         clearInterval(this.countdown);
         sessionStorage.removeItem('then');
@@ -30,6 +31,7 @@ class Timer {
     }, 1000);
   }
 
+  // Calculate time left
   getSecondsLeft() {
     return Math.round((this.then - Date.now()) / 1000);
   }

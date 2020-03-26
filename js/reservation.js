@@ -11,9 +11,9 @@ class Reservation {
     // this.lastname = this.main.getElementsByClassName('last-name')[0];
     this.lastname = this.main.querySelector('.last-name');
     this.firstname = this.main.querySelector('.first-name');
-    this.buttonClose = this.main.querySelector('.delete');
-    this.buttonClear = this.main.querySelector('.sig-clearBtn');
-    this.buttonSubmit = this.main.querySelector('.sig-submitBtn');
+    this.buttonClose = this.main.querySelector('.delete'); // Close btn for the aside
+    this.buttonClear = this.main.querySelector('.sig-clearBtn'); // Eraser btn for canvas
+    this.buttonSubmit = this.main.querySelector('.sig-submitBtn'); // Validation btn for reservation
 
     this.buttonClose.addEventListener('click', this.closeForm.bind(this));
     this.buttonClear.addEventListener('click', this.clear.bind(this));
@@ -89,10 +89,6 @@ class Reservation {
     this.setLocalStorage();
     this.setSessionStorage();
     this.closeForm();
-  }
-
-  getLastName() {
-    return this.lastname.value;
   }
 
   getReservationMessage(timeLeft) {

@@ -2,8 +2,6 @@ class Signature {
   constructor(signatureNode, reservation) {
     this.reservation = reservation;
     this.canvas = signatureNode;
-    // this.canvas.setAttribute('width', this.canvas.parentElement.clientWidth);
-    // this.canvas.setAttribute('height', this.canvas.parentElement.clientHeight);
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineWidth = 4;
     this.ctx.lineCap = 'round';
@@ -17,7 +15,6 @@ class Signature {
     this.canvas.addEventListener('mouseup', this.finishedPosition.bind(this));
     this.canvas.addEventListener('mousemove', this.sign.bind(this));
     this.canvas.addEventListener('mouseout', this.finishedPosition.bind(this));
-
     this.canvas.addEventListener('touchstart', this.startPosition.bind(this));
     this.canvas.addEventListener('touchend', this.finishedPosition.bind(this));
     this.canvas.addEventListener('touchmove', this.sign.bind(this));
@@ -70,44 +67,3 @@ class Signature {
     this.reservation.reservationValidation();
   }
 }
-
-// startPosition(e) {
-//   e.preventDefault();
-//   this.drawing = true;
-//   switch (e.pointerType) {
-//     case 'mouse':
-//       this.ctx.beginPath();
-//       this.ctx.lineTo(e.offsetX, e.offsetY);
-//       break;
-//     case 'touch':
-//       console.log('touchstart');
-//       let rect = this.canvas.getBoundingClientRect();
-//       let x = e.targetTouches[0].clientX - rect.left;
-//       let y = e.targetTouches[0].clientY - rect.top;
-//       this.ctx.beginPath();
-//       this.ctx.moveTo(x, y);
-//       break;
-//   }
-//   this.drawingValidation = true;
-//   this.reservation.reservationValidation();
-// }
-
-// sign(e) {
-//   e.preventDefault();
-//   if (this.drawing == true) {
-//     switch (e.pointerType) {
-//       case 'mouse':
-//         this.ctx.lineTo(e.offsetX, e.offsetY);
-//         this.ctx.stroke();
-//         break;
-//       case 'touch':
-//         console.log('touchmove');
-//         let rect = this.canvas.getBoundingClientRect();
-//         let x = e.targetTouches[0].clientX - rect.left;
-//         let y = e.targetTouches[0].clientY - rect.top;
-//         this.ctx.lineTo(x, y);
-//         this.ctx.stroke();
-//         break;
-//     }
-//   }
-// }

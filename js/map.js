@@ -72,18 +72,6 @@ class Map {
       bikeAvailable.innerHTML = station.totalStands.availabilities.bikes;
       parkingAvailable.innerHTML = station.totalStands.availabilities.stands;
     }
-
-    // center Marker on clic
-    // this.container.flyTo({
-    //   center: [station.position.longitude, station.position.latitude],
-    //   zoom: 13,
-    //   speed: 0.2,
-    //   curve: 1.42,
-    //   maxDuration: 1,
-    //   easing(t) {
-    //     return t;
-    //   }
-    // });
   }
 
   // AJAX request
