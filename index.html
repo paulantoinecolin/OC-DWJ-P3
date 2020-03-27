@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>OC-DWJ-P3</title>
     <!-- Icones Fontawesome-->
     <link
       rel="stylesheet"
       href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
+    <!-- API + css stylesheet Bulma -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css"
+      rel="stylesheet"
     />
     <!-- Framework CSS Bulma -->
     <link
@@ -15,130 +21,132 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- API + css stylesheet Bulma -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <title>OC-DWJ-P3</title>
   </head>
 
   <body>
-    <!-- Carroussel -->
-    <div class="slideshow-container " id="diapo">
-      <figure>
-        <img src="img/diapo_1.png" alt="montagne" />
-        <figcaption></figcaption>
-      </figure>
-
-      <figure>
-        <img src="img/diapo_2.png" alt="plage" />
-        <figcaption></figcaption>
-      </figure>
-
-      <figure>
-        <img src="img/diapo_3.png" alt="nuages" />
-        <figcaption></figcaption>
-      </figure>
-
-      <div class="navigation" id="navigation">
-        <!-- Next and Previous buttons -->
-        <span class="icon is-large prev">
-          <i class="fas fa-chevron-left"></i>
-        </span>
-        <span class="icon is-large next">
-          <i class="fas fa-chevron-right"></i>
-        </span>
-
-        <!-- Play/Pause button -->
+    <!-- <header class="hero">
+      <div class="hero-body">
+        <h1 class="title">Comment réserver un vélo</h1>
       </div>
-      <div class="btnPausePosition">
-        <span class="icon is-large">
-          <i class="fas fa-pause btnPause"></i>
-        </span>
-      </div>
-    </div>
+    </header> -->
 
-    <!-- Map -->
-    <div id="map">
-      <!-- Reservation -->
-      <aside id="reservation" class="reservation container">
-        <button class="delete is-small"></button>
-        <div class="message">
-          <div class="availabilities message-header">
-            <p id="bikeAvailable"></p>
-            <span class="icon is-medium">
-              <i class="fas fa-bicycle"></i>
-            </span>
-            <p id="parkingAvailable"></p>
-            <span class="icon is-medium">
-              P
-            </span>
-          </div>
-          <div class="stationCard">
-            <p id="stationName"></p>
-            <p id="stationAddress"></p>
-          </div>
+    <main>
+      <!-- Carroussel -->
+      <div class="slideshow-container " id="diapo">
+        <figure>
+          <img src="img/diapo_1.png" alt="montagne" />
+          <figcaption></figcaption>
+        </figure>
+
+        <figure>
+          <img src="img/diapo_2.png" alt="plage" />
+          <figcaption></figcaption>
+        </figure>
+
+        <figure>
+          <img src="img/diapo_3.png" alt="nuages" />
+          <figcaption></figcaption>
+        </figure>
+
+        <div class="navigation" id="navigation">
+          <!-- Next and Previous buttons -->
+          <span class="icon is-large prev">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          <span class="icon is-large next">
+            <i class="fas fa-chevron-right"></i>
+          </span>
+
+          <!-- Play/Pause button -->
         </div>
-        <!-- Formulaire -->
-        <form id="formulaire" method="post">
-          <div class="field">
-            <label class="label is-small">NOM</label>
-            <div class="control">
-              <input
-                type="text"
-                name="last-name"
-                class="input is-small is-rounded last-name stored"
-                value=""
-              />
+        <div class="btnPausePosition">
+          <span class="icon is-large">
+            <i class="fas fa-pause btnPause"></i>
+          </span>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div id="map">
+        <!-- Reservation -->
+        <aside id="reservation" class="reservation container">
+          <button class="delete is-small"></button>
+          <div class="message">
+            <div class="availabilities message-header">
+              <p id="bikeAvailable"></p>
+              <span class="icon is-medium">
+                <i class="fas fa-bicycle"></i>
+              </span>
+              <p id="parkingAvailable"></p>
+              <span class="icon is-medium">
+                P
+              </span>
             </div>
+            <div class="stationCard">
+              <p id="stationName"></p>
+              <p id="stationAddress"></p>
+            </div>
+          </div>
+          <!-- Formulaire -->
+          <form id="formulaire" method="post">
             <div class="field">
-              <label class="label is-small">PRÉNOM</label>
+              <label class="label is-small">NOM</label>
               <div class="control">
                 <input
                   type="text"
-                  name="first-name"
-                  class="input is-small is-rounded first-name stored"
+                  name="last-name"
+                  class="input is-small is-rounded last-name stored"
                   value=""
                 />
               </div>
+              <div class="field">
+                <label class="label is-small">PRÉNOM</label>
+                <div class="control">
+                  <input
+                    type="text"
+                    name="first-name"
+                    class="input is-small is-rounded first-name stored"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- Canvas -->
+          <div class="signature">
+            <div class="row">
+              <p>Signature<i class="fas fa-lg fa-eraser sig-clearBtn"></i></p>
+              <div class="row"></div>
+              <canvas class="sig-canvas" width="270" height="120">
+                Veuillez mettre à jour votre navigateur.
+              </canvas>
+            </div>
+            <div class="row">
+              <button
+                class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button"
+                disabled
+              >
+                RÉSERVER
+              </button>
             </div>
           </div>
-        </form>
-        <!-- Canvas -->
-        <div class="signature">
-          <div class="row">
-            <p>Signature<i class="fas fa-lg fa-eraser sig-clearBtn"></i></p>
-            <div class="row"></div>
-            <canvas class="sig-canvas" width="270" height="120">
-              Veuillez mettre à jour votre navigateur.
-            </canvas>
-          </div>
-          <div class="row">
-            <button
-              class="button is-primary is-small is-rounded sig-submitBtn btn btn-primary timer__button"
-              disabled
-            >
-              RÉSERVER
-            </button>
-          </div>
-        </div>
-      </aside>
-    </div>
-    <!-- Validation + Timer -->
-    <div id="timer" class="block">
-      <div class="display notification">
-        <p class="reservationFeedback"></p>
+        </aside>
       </div>
-    </div>
+      <!-- Validation + Timer -->
+      <div id="timer" class="block">
+        <div class="display notification">
+          <p class="reservationFeedback"></p>
+        </div>
+      </div>
+    </main>
 
     <!-- Scripts Javascript -->
-    <script src="js/start.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
     <script src="js/diaporama.js"></script>
     <script src="js/signature.js"></script>
     <script src="js/reservation.js"></script>
     <script src="js/map.js"></script>
     <script src="js/timer.js"></script>
+    <script src="js/start.js"></script>
   </body>
 </html>
