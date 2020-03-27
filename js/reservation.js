@@ -1,3 +1,4 @@
+'use strict';
 class Reservation {
   constructor(reservationNode, timerNode) {
     this.main = reservationNode;

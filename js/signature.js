@@ -1,3 +1,4 @@
+'use strict';
 class Signature {
   constructor(signatureNode, reservation) {
     this.reservation = reservation;

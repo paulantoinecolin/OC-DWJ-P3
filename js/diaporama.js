@@ -1,3 +1,4 @@
+'use strict';
 class Diaporama {
   constructor(idContainer) {
     this.index = 0;

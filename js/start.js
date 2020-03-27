@@ -1,3 +1,4 @@
+'use strict';
 window.onload = function() {
   const diaporama = new Diaporama('diapo');
   const map = new Map(document.getElementById('map'));
