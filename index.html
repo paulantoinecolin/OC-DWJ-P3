@@ -24,15 +24,10 @@
   </head>
 
   <body>
-    <!-- <header class="hero">
-      <div class="hero-body">
-        <h1 class="title">Comment réserver un vélo</h1>
-      </div>
-    </header> -->
-
     <main>
       <!-- Carroussel -->
-      <div class="slideshow-container " id="diapo">
+      <section class="slideshow-container " id="diapo">
+        <h1 class="title">Comment réserver un vélo</h1>
         <figure>
           <img src="img/diapo_1.png" alt="montagne" />
           <figcaption></figcaption>
@@ -56,22 +51,23 @@
           <span class="icon is-large next">
             <i class="fas fa-chevron-right"></i>
           </span>
-
-          <!-- Play/Pause button -->
         </div>
+
+        <!-- Play/Pause button -->
         <div class="btnPausePosition">
           <span class="icon is-large">
             <i class="fas fa-pause btnPause"></i>
           </span>
         </div>
-      </div>
+      </section>
 
       <!-- Map -->
       <div id="map" class="map">
         <!-- Reservation -->
-        <aside id="reservation" class="reservation container">
+        <section id="reservation" class="reservation container">
           <button class="delete is-small"></button>
           <div class="message">
+            <h2 class="dispo">Disponibilités</h2>
             <div class="availabilities message-header">
               <p id="bikeAvailable"></p>
               <span class="icon is-medium">
@@ -130,14 +126,14 @@
               </button>
             </div>
           </div>
-        </aside>
+        </section>
       </div>
       <!-- Validation + Timer -->
-      <div id="timer" class="block timer">
+      <section id="timer" class="block timer">
         <div class="display notification">
           <p class="reservationFeedback"></p>
         </div>
-      </div>
+      </section>
     </main>
 
     <!-- Scripts Javascript -->

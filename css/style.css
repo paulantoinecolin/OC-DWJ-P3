@@ -9,8 +9,12 @@ body {
   background-color: #fbfafa;
 }
 
-.hero {
-  color: white;
+.title {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
 }
 
 /* Hide mapbox content */
@@ -37,7 +41,7 @@ figure {
 }
 
 img {
-  border-radius: 0 0 25px 25px;
+  border-radius: 25px;
 }
 
 /* Caption text */
@@ -59,7 +63,7 @@ figcaption {
 .next {
   cursor: pointer;
   position: absolute;
-  top: 35%;
+  top: 45%;
   font-size: 1.5em;
   border-radius: 50%;
   color: black;
@@ -97,7 +101,7 @@ figcaption {
 .map {
   display: block;
   position: absolute;
-  top: 557px;
+  top: 595px;
   width: 100%;
   height: 720px;
 }
@@ -130,7 +134,15 @@ figcaption {
   background-color: rgb(233, 67, 53);
 }
 
-/* Aside reservation window */
+/* reservation window */
+.titre_dispo {
+  padding: 3px;
+  color: white;
+  background-color: #4a4a4a;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .reservation {
   z-index: 10;
   display: none;
@@ -239,7 +251,11 @@ form {
 
 /* Version mobile */
 @media screen and (max-width: 480px) {
-  /* Aside reservation window */
+  /* reservation window */
+  .title {
+    font-size: 1.1rem;
+  }
+
   .reservation {
     position: absolute;
     margin: 0 auto;

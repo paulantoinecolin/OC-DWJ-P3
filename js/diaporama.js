@@ -23,7 +23,7 @@ class Diaporama {
       this.plusSlides(1);
     });
 
-    window.addEventListener('keydown', e => {
+    window.addEventListener('keyup', e => {
       if (e.keyCode == '37') {
         this.plusSlides(-1);
       } else if (e.keyCode == '39') {
@@ -32,12 +32,6 @@ class Diaporama {
         this.playing ? this.pauseSlideshow() : this.playSlideshow();
       }
     });
-
-    // window.addEventListener('keydown', e => {
-    //   if (e.keyCode == '75') {
-    //     this.playing ? this.pauseSlideshow() : this.playSlideshow();
-    //   }
-    // });
 
     this.pauseButton.addEventListener('click', () => {
       this.playing ? this.pauseSlideshow() : this.playSlideshow();
